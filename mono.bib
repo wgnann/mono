@@ -1,0 +1,261 @@
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% INSERINDO COMENTÁRIOS EM ARQUIVOS .bib %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% 1. Como em outros arquivos LaTeX, comentários são iniciados por "%" e,
+%    portanto, é preciso usar "\%" para imprimir o caractere "%". Esquecer
+%    disso pode gerar erros difíceis de encontrar!
+%
+% 2. Não é possível inserir comentários dentro de uma entrada, apenas fora.
+%
+% 3. Não é possível incluir o caractere arroba em um comentário.
+%
+% 4. Se quiser desabilitar temporariamente um campo ("comentar" o campo),
+%    troque seu nome para algum nome inválido, como "author-disable".
+%    Se quiser fazer alguma observação permanente dentro de uma entrada,
+%    você também pode usar algum nome de campo inválido, como "lembrete",
+%    ou usar o campo "annotation", que normalmente é ignorado.
+%
+% 5. Se quiser desabilitar temporariamente uma entrada inteira ("comentar" a
+%    entrada), não basta colocar "%" nas linhas correspondentes por causa do
+%    caractere arroba; também é preciso remover a arroba.
+%
+% 6. Na verdade, as regras não são bem essas, mas segui-las é uma boa ideia:
+%    https://tex.stackexchange.com/a/262282
+%
+% Por exemplo, esta entrada está comentada, ou seja, não tem efeito: se
+% houvesse uma referência a ela no texto, a referência ficaria inválida.
+% Observe que, para isso, o caractere arroba foi apagado!
+%
+%Book{JW82,
+% author    = {Richard A. Johnson and Dean W. Wichern},
+% title     = {Applied Multivariate Statistical Analysis},
+% publisher = {Prentice-Hall},
+% year      = {1983}
+%}
+
+@article{Klemperer1999,
+  doi = {10.1111/1467-6419.00083},
+  url = {https://doi.org/10.1111/1467-6419.00083},
+  year = {1999},
+  month = jul,
+  publisher = {Wiley},
+  volume = {13},
+  number = {3},
+  pages = {227--286},
+  author = {Paul Klemperer},
+  title = {Auction Theory: A Guide to the Literature},
+  journal = {Journal of Economic Surveys}
+}
+
+@BOOK{Cassady2021-ac,
+  title     = "Auctions and Auctioneering",
+  author    = "Cassady, Ralph",
+  publisher = "University of California Press",
+  month     =  may,
+  year      =  2021,
+  address   = "Berkeley, CA"
+}
+
+@book{Milgrom2004,
+  doi = {10.1017/cbo9780511813825},
+  url = {https://doi.org/10.1017/cbo9780511813825},
+  year = {2004},
+  month = jan,
+  publisher = {Cambridge University Press},
+  author = {Paul Milgrom},
+  title = {Putting Auction Theory to Work}
+}
+
+@book{Nisan2007,
+  doi = {10.1017/cbo9780511800481},
+  url = {https://doi.org/10.1017/cbo9780511800481},
+  year = {2007},
+  month = sep,
+  publisher = {Cambridge University Press},
+  editor = {Noam Nisan and Tim Roughgarden and Eva Tardos and Vijay V. Vazirani},
+  title = {Algorithmic Game Theory}
+}
+
+@BOOK{Shoham2008,
+  title     = {Multiagent systems},
+  author    = {Shoham, Yoav and Leyton-Brown, Kevin},
+  publisher = {Cambridge University Press},
+  month     =  dec,
+  year      =  2008,
+  address   = {Cambridge, England},
+  language  = {en}
+}
+
+@book{TCE2022,
+  title     = {Reflexões sobre a nova lei de licitações},
+  author    = {Bibiana Helena Freitas Camargo and Sérgio Ciquera Rossi and Patrick Raffael Comparoni},
+  publisher = {EPCP - Escola Paulista de Contas Públicas},
+  year      = 2022,
+  address   = {São Paulo},
+  url       = {https://www.tce.sp.gov.br/sites/default/files/publicacoes/Livro_TCESP_online.pdf}
+}
+
+@book{TCE2023,
+  title     = {Cartilha Nova Lei de Licitações e Contratos},
+  author    = {Sérgio Ciquera Rossi},
+  publisher = {Tribunal de Contas do Estado de São Paulo},
+  year      = 2023,
+  month     = aug,
+  address   = {São Paulo},
+  url       = {https://www.tce.sp.gov.br/sites/default/files/publicacoes/cartilha_nova_lei_licitacoes_contratos.pdf}
+}
+
+@Mastersthesis{Souza,
+  doi = {10.11606/d.12.2016.tde-04032016-113403},
+  url = {https://doi.org/10.11606/d.12.2016.tde-04032016-113403},
+  year = {2016},
+  publisher = {Universidade de Sao Paulo,  Agencia {USP} de Gestao da Informacao Academica ({AGUIA})},
+  author = {Anderson Cardoso Pinto de Souza},
+  title = {Leil{\~{a}}o aberto versus leil{\~{a}}o selado: evid{\^{e}}ncia com dados brasileiros de compras governamentais}
+}
+
+@Mastersthesis{Santos,
+  doi = {10.11606/d.12.2018.tde-17082018-162125},
+  url = {https://doi.org/10.11606/d.12.2018.tde-17082018-162125},
+  year = {2018},
+  publisher = {Universidade de Sao Paulo,  Agencia {USP} de Gestao da Informacao Academica ({AGUIA})},
+  author = {Carolina Tojal Ramos dos Santos},
+  title = {Compras eletr{\^{o}}nicas e incentivos {\`{a}}~efici{\^{e}}ncia no setor p{\'{u}}blico: evid{\^{e}}ncias do Estado de S{\~{a}}o Paulo}
+}
+
+@article{Reis2018,
+  doi = {10.1590/0034-7612164442},
+  url = {https://doi.org/10.1590/0034-7612164442},
+  year = {2018},
+  month = jan,
+  publisher = {{FapUNIFESP} ({SciELO})},
+  volume = {52},
+  number = {1},
+  pages = {107--125},
+  author = {Paulo Ricardo da Costa Reis and Sandro Cabral},
+  title = {Para al{\'{e}}m dos pre{\c{c}}os contratados: fatores determinantes da celeridade nas entregas de compras p{\'{u}}blicas eletr{\^{o}}nicas},
+  journal = {Revista de Administra{\c{c}}{\~{a}}o P{\'{u}}blica}
+}
+
+@manual{manualbec,
+ author  = {Governo do Estado de São Paulo. Secretaria de Estado dos Negócios da Fazenda. },
+ title   = {WebService – Compras Eletrônicas - Manual Técnico},
+ year    = 2018,
+ url     = {https://portal.fazenda.sp.gov.br/acessoinformacao/Downloads/Webservice-BEC/Manual Webservice_Compras Eletronicas MAIO 2018.doc},
+ urldate = {2023-05-09},
+}
+
+@Misc{lei14133,
+ author   = {Brasil},
+ title    = {Lei nº 14.133, de 1º de abril de 2021},
+ year     = {2021}
+}
+
+@online{fkm:2010,
+ author  = {Flávio Keidi Miyazawa},
+ title   = {Introdução à Teoria dos Jogos Algorítmica},
+ year    = 2010,
+ url     = {www.ic.unicamp.br/~fkm/lectures/algorithmicgametheory.pdf},
+ urldate = {2023-05-09},
+}
+
+@online{villa:2022,
+  author  = {Giuseppe Lopomo, Nicola Persico and Alessandro Tenzin Villa},
+  title   = {Optimal Procurement With Quality Concerns},
+  year    = 2022,
+  url     = {https://www.alessandrotenzinvilla.com/pdf/Optimal%20procurement%20with%20quality%20concerns.pdf},
+  urldate = {2023-07-24},
+}
+
+@article{barbosa2013,
+  url = {https://repositorio.ipea.gov.br/handle/11058/1092},
+  year = {2013},
+  month = jun,
+  publisher = {Instituto de Pesquisa Econômica Aplicada (IPEA)},
+  volume = {1757},
+  author = {Klênio de Souza Barbosa},
+  title = {Sistema brasileiro de registro de preços: virtudes e vícios à luz da teoria econômica},
+  journal = {Texto para Discussão (TD)}
+}
+
+@MastersThesis{pellegrini2018:MSc,
+ author   = {Guilherme Martins Pellegrini},
+ title    = {Licitação multiunitária: modelagem de contratações públicas a partir da Teoria dos Leilões},
+ school   = {Escola de Direito de São Paulo, Fundação Getúlio Vargas},
+ address  = {São Paulo, Brasil},
+ year     = {2018},
+ month    = Jul,
+ url      = {http://hdl.handle.net/10438/24296}
+}
+
+@MastersThesis{castro2020:MSc,
+ author   = {Cristiano Jorge Poubel de Castro},
+ title    = {A formação de preços de produtos de tecnologia em processos eletrônicos de compras do governo federal: uma abordagem baseada na teoria econômica de leilões},
+ school   = {Instituto Brasiliense de Direito Público},
+ address  = {Brasília, Brasil},
+ year     = {2020},
+ month    = Jul,
+ url      = {https://repositorio.idp.edu.br//handle/123456789/2639}
+}
+
+@article{deCastro2010,
+  doi = {10.1016/j.econlet.2009.10.017},
+  url = {https://doi.org/10.1016/j.econlet.2009.10.017},
+  year = {2010},
+  month = feb,
+  publisher = {Elsevier {BV}},
+  volume = {106},
+  number = {2},
+  pages = {115--118},
+  author = {Luciano I. de Castro and María-Angeles de Frutos},
+  title = {How to translate results from auctions to procurements},
+  journal = {Economics Letters}
+}
+
+@article{Bugarin2022,
+  doi = {10.1590/1980-53575242mbap},
+  url = {https://doi.org/10.1590/1980-53575242mbap},
+  year = {2022},
+  month = dec,
+  publisher = {{FapUNIFESP} ({SciELO})},
+  volume = {52},
+  number = {4},
+  pages = {695--767},
+  author = {Maurício S. Bugarin and Adriana C. Portugal},
+  title = {Licita{\c{c}}{\~{o}}es com pre{\c{c}}o de reserva secreto e negocia{\c{c}}{\~{a}}o: Uma an{\'{a}}lise de teoria dos leil{\~{o}}es para o caso de valores privados},
+  journal = {Estudos Econ{\^{o}}micos (S{\~{a}}o Paulo)}
+}
+
+@book{krishna,
+	author = {Krishna, Vijay},
+	title = {Auction theory /},
+	publisher = {Academic Press,},
+	year = 2002,
+	address = {San Diego :}
+}
+
+@article{Signor2022,
+  doi = {10.1590/0034-761220210133},
+  url = {https://doi.org/10.1590/0034-761220210133},
+  year = 2022,
+  month = feb,
+  publisher = {{FapUNIFESP} ({SciELO})},
+  volume = {56},
+  number = {1},
+  pages = {176--190},
+  author = {Regis Signor and Fernanda Fernandes Marchiori and Alexandre Bacellar Raupp and Rafael Rubin Magro and Alan de Oliveira Lopes},
+  title = {A nova lei de licita{\c{c}}{\~{o}}es como promotora da maldi{\c{c}}{\~{a}}o do vencedor},
+  journal = {Revista de Administra{\c{c}}{\~{a}}o P{\'{u}}blica}
+}
+
+@book{karlin2017game,
+  title={Game Theory, Alive},
+  author={Karlin, A.R. and Peres, Y.},
+  isbn={9781470419820},
+  lccn={2016038151},
+  series={Miscellaneous Book Series},
+  url={https://books.google.com.br/books?id=9_vFDgAAQBAJ},
+  year={2017},
+  publisher={American Mathematical Society}
+}

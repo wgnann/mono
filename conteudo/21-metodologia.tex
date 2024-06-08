@@ -1,0 +1,107 @@
+%!TeX root=../tese.tex
+%("dica" para o editor de texto: este arquivo é parte de um documento maior)
+% para saber mais: https://tex.stackexchange.com/q/78101
+
+\chapter{O que pretendemos com o presente trabalho?}
+\label{cap:objetivo}
+
+Este projeto de pesquisa pretende nortear um empreendimento de natureza teórica, cujo objetivo é justamente modelar e encontrar resultados econômicos sobre o Sistema de Registro de Preços.
+
+Será necessário modelar o processo licitatório que culmina na ata de registro de preços, levando em consideração o comportamento tanto do órgão público quanto dos licitantes. Pretendemos encontrar resultados sobre as estrátegias dos agentes, compará-los com os resultados da literatura para licitações tradicionais e contrastar os resultados obtidos com os dados da Bolsa Eletrônica de Compras do Estado de São Paulo, disponibilizados por meio de uma API\footnote{\emph{Application Programming Interface}, serviço \emph{web} que entrega alguma coisa. No nosso caso, são os dados de certames realizados em São Paulo.}.
+
+A principal contribuição é conceber uma análise sobre o mecanismo do registro de preços, unindo os resultados dos trabalhos que estão nas referências como o problema da maldição do vencedor e o problema da qualidade. Ressalta-se que a literatura sobre licitações por registro de preços aparentemente é escassa.
+
+Acreditamos que há diferença entre a qualidade do bem ofertado em ambas as modalidades, em função da não obrigatoriedade de se adquirir um bem a partir de um contrato de registro de preços. Além disso, é possível haver o problema da exposição, dado que o órgão público pode não demandar bens que são complementares para os licitantes. Como a competição se dá pelo preço do lote completo, segue que não necessariamente haverá a possibilidade de um item do lote subsidiar outro item. Por fim, a dinâmica de aquisições aliada ao grau de competição na fase de lances pode culminar numa situação de maldição do vencedor.
+
+A aplicação dos resultados é imediata: os pregoeiros, em posse do conhecimento, poderão montar editais potencialmente mais eficientes, diminuindo a probabilidade de fracasso do certame bem como garantindo preços competitivos.
+
+A Lei de Licitações versa sobre o uso das modalidades, mas o fato é que na maioria das vezes não parece evidente qual é a melhor configuração \citep[p. 62]{pellegrini2018:MSc}.
+
+\section{Modelo básico de uma licitação}
+Um processo licitatório com pregão dispõe de diversas fases\footnote{Uma descrição completa pode ser encontrada nos manuais, presentes no endereço \url{https://www.bec.sp.gov.br/becsp/aspx/Downloads_Editais_Minuta_Antigo.aspx}.}, neste trabalho será relevante somente a fase de lances, que é modelada por um leilão reverso. O modelo mais simples possível considera uma economia onde existem o órgão público, demandante, e licitantes, ofertantes de determinado bem. 
+
+A fase de lances de uma licitação pode ser modelada como um jogo bayesiano \citep{barbosa2013, Bugarin2022} onde:
+\begin{enumerate}
+    \item Os $N$ jogadores são os licitantes;
+    \item A ação um licitante é seu lance \textbf{único};
+    \item O sinal é o custo para o licitante fornecer o bem;
+    \item O \emph{payoff} é a diferença entre o lance e o custo quando o jogador $i$ vence e 0, caso contrário;
+    \item Há uma distribuição de probabilidade sobre o conjunto de sinais que, no nosso caso, diz qual a probabilidade de um licitante ter um determinado custo;
+    \item Todos os agentes são neutros ao risco;
+    \item O jogo é simétrico e, portanto, todos os licitantes têm a mesma distribuição de probabilidade.
+\end{enumerate}
+
+Pelo \emph{Princípio da Revelação} \citep{karlin2017game}, para todo leilão, $A$, existe um leilão de um único lance, $A'$, equivalente cuja estratégia ótima é dar um lance igual ao custo, portanto, é suficiente para efeito de modelagem trabalharmos com licitações um único lance.
+
+\section{Extensão do modelo para registros de preço}
+A fase de lances de uma licitação por registro de preços assume o mesmo comportamento de uma licitação. Contudo, a aquisição propriamente dita é realizada numa fase posterior, resultando em, pelo menos, duas fases: a fase de lances e a fase de compras.
+
+\subsection{O órgão público}
+O órgão público será um jogador com papel ativo no jogo. Sua ação será decidir na fase de compra se serão demandadas mais unidades do bem. Seu \emph{payoff} será a diferença entre a utilidade do bens adquiridos e o valor pago ao fornecedor vencedor do certame, dada pela equação:
+\begin{equation}
+    u(q) - pq
+\end{equation}
+
+Onde $u(q)$ representa a utilidade para o setor público de se consumir $q$ unidades e $p$ representa o preço unitário obtido na fase de lances do certame.
+
+Um exemplo de situação a se analisar versa sobre a qualidade do bem. Nessa situação, a qualidade só será revelada depois de adquirida a primeira unidade, ou seja, a unidade adicional será adquirida se o \emph{payoff} \emph{ex-post} for maior ou igual a zero.
+
+\subsection{Os licitantes}
+Seguindo a literatura, o sinal dos vencedores será mapeado pela função custo:
+\begin{equation}
+    c(\beta), \beta \in [\underaccent{\bar}{\beta}, \bar{\beta}]
+\end{equation}
+
+Vence o certame quem praticar o menor preço e, portanto, o preço praticado pelo vencedor será como em \citep{barbosa2013}:
+\begin{equation}
+    p = c(\underaccent{\bar}{\beta})
+\end{equation}
+
+\subsection{Dados e códigos}
+Serão utilizados dados disponibilizados a partir da API da Bolsa Eletrônica de Compras. Tais dados são entregues no formato JSON\footnote{\emph{JavaScript Object Notation}.}, que consiste, essencialmente, em dados textuais - legíveis para um ser humano - organizados em pares de chave/valor.
+
+Toda compra realizada na BEC é identificada por um número de Oferta de Compra, identificada no JSON pelo atributo \verb+OC+. É possível separar os pregões em pregões de material, serviços e registro de preços.
+
+Há três níveis de navegação \citep{manualbec}:
+\begin{itemize}
+    \item Lista dos itens em negociação;
+    \item Informações sobre ofertas de compra relativas a um determinado item;
+    \item Informações relativas a uma determinada oferta de compra.
+\end{itemize}
+
+Pretendemos utilizar os dados da BEC, primeiramente, com o objetivo de conduzir uma análise exploratória comparando os resultados obtidos para determinados itens a partir da modalidade tradicional e por meio do registro de preços. Pode acontecer, por exemplo, de haver alguns segmentos onde a diferença de preço entre as modalidades é maior e outros segmentos onde é mais fácil de identificar problemas relacionados à qualidade dos bens ofertados. Também pretendemos utilizar os dados da BEC para comparar os resultados previstos pelo modelo com os resultados obtidos em certames do mundo real justamente com a finalidade de validar o modelo.
+
+Atentamos que não há conflito ético em se utilizar os dados da BEC para a presente pesquisa, pois \emph{qualquer interessado poderá desenvolver aplicações nos mais diversos tipos de plataforma, capazes de, utilizando os serviços descritos, obter dados sobre compras eletrônicas do Estado, potencializando o uso de tais informações} \citep{manualbec}.
+
+Todos os códigos desenvolvidos no contexto da seguinte pesquisa serão publicados em algum repositório aberto e público como o \emph{GitHub}.
+
+\section{Planejamento}
+Para a realização deste projeto há, ao menos, as seguintes etapas:
+\begin{itemize}
+    \item Levantamento (e aprofundamento) de bibliografia: com a finalidade de resolver o problema exposto no presente projeto, é imprescindível compreender o estado da arte;
+    \item Levantamento e organização dos dados da BEC;
+    \item Modelar de fato o problema e obter resultados teóricos;
+    \item Escrever os programas e rodar as simulações associadas aos modelos;
+    \item Comparar os resultados da simulação com os da BEC;
+    \item Redigir a monografia propriamente dita.
+\end{itemize}
+
+\subsection{Cronograma}
+
+\begin{table}[]
+\begin{tabular}{@{}llllllll@{}}
+\toprule
+\multirow{2}{*}{Etapas da pesquisa}                              &     &     &     &     &     &     &     \\ \cmidrule(l){2-8} 
+                                                                 & Out & Nov & Dez & Feb & Mar & Abr & Mai \\ \cmidrule(r){1-1}
+Entrega do projeto                                               & x   & x   &     &     &     &     &     \\
+Apresentação                                                     & x   & x   &     &     &     &     &     \\
+Levantamento da bibliografia                                     & x   & x   & x   &     &     &     &     \\
+Organização e revisão da literatura                              & x   & x   & x   & x   &     &     &     \\
+Capítulo 1: problema, contexto e revisão                         &     &     & x   & x   &     &     &     \\
+Capítulo 2: registro de preços e o problema da qualidade         &     &     & x   & x   &     &     &     \\
+Modelagem, simulação e confronto com os dados da BEC             &     &     &     & x   & x   & x   &     \\
+Capítulo 3: metodologia                                          &     &     &     &     & x   & x   &     \\
+Capítulo 4: resultados e conclusões                              &     &     &     &     &     & x   & x   \\
+Entrega                                                          &     &     &     &     &     &     & x   \\ \bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,136 @@
+%!TeX root=../projeto.tex
+%("dica" para o editor de texto: este arquivo é parte de um documento maior)
+% para saber mais: https://tex.stackexchange.com/q/78101
+
+%% ------------------------------------------------------------------------- %%
+
+% "\chapter" cria um capítulo com número e o coloca no sumário; "\chapter*"
+% cria um capítulo sem número e não o coloca no sumário. A introdução não
+% deve ser numerada, mas deve aparecer no sumário. Por conta disso, este
+% modelo define o comando "\unnumberedchapter".
+\chapter{Revisão bibliográfica}
+\label{cap:revisao}
+
+\section{Leilões}
+
+\emph{Dou-lhe uma! Dou-lhe duas! Dou-lhe três!} O leilão certamente figura entre as instituições mais antigas e mais conhecidas da história da humanidade. Situa-se, na Idade Antiga, desde 500a.C., na Babilônia, onde as famílias leiloavam as filhas para casamento, passando pelo leilão do Império Romano em 193 a.C., vencido por Didius Julianus\footnote{Talvez não tenha sido um bom investimento, pois Didius Julianus morreu dois meses depois, decapitado pelas legiões lideradas por Septimius Severus. Segundo \citet{krishna}, trata-se de um caso extremo da maldição do vencedor.} ao dar a maior doação \citet{Cassady2021-ac}.
+
+Também é bastante presente na cultura popular\footnote{\url{https://tvtropes.org/pmwiki/pmwiki.php/Main/Auction}.} fazendo parte de séries de TV como \emph{Star Trek}, jogos de videogame como \emph{Diablo} e \emph{Final Fantasy}, animações como \emph{WiFI Ralph} e \emph{Futurama} e músicas como \emph{Leilão}\footnote{Glória Groove. Clipe em: \url{https://www.youtube.co/watch?v=X7cz9v6mHzg}.}. Não é um exagero dizer que o senso comum entende o conceito de leilão e que esse conceito tem mais de 2000 anos.
+
+Hoje em dia os leilões são usados para diversas finalidades: venda de lotes de itens da Receita Federal, venda de ativos financeiros, venda de propaganda em sites da Internet\footnote{A Google utiliza: \url{https://support.google.com/google-ads/answer/142918}.} e a venda de bens em geral. O leilão é um método universal de venda, pois qual quer coisa possível de ser vendida pode ser vendida num leilão \citet{krishna}.
+
+Duas propriedades importantes dos leilões são o fato extraírem informação dos agentes participantes por meio dos lances e a identidade desses agentes ser irrelevante para o resultado \citet{krishna}.
+
+Os leilões entregam um arcabouço teórico geral para entender o problema da alocação de recursos entre agentes auto-interessados, tendo aplicações muito além das vendas como a alocação de recursos computacionais em sistemas compartilhados \citet{Shoham2008}.
+
+\section{Leilões de um único objeto}
+
+Trataremos aqui dos formatos de leilões mais conhecidos na literatura.
+
+\subsection{Leilão inglês}
+
+Provavelmente o formato de leilão mais conhecido é o leilão aberto ascendente ou também conhecido por leilão inglês. É o modelo onde há um leiloeiro e diversos compradores que dão lances cada vez maiores, cobrindo o lance anterior, até que ninguém queira cobrir o último lance. Há um tempo para que os interessados possam cobrir o lance anterior. O lance de maior valor, e portanto o último, determinará quem é o vencedor.
+
+Uma variação do leilão inglês é o leilão japonês, onde o leiloeiro anuncia os preços e, para cada preço, os compradores decidem se participam até que somente um anuncie a participação para um dado preço \citet{Shoham2008}.
+
+Com alguma reflexão podemos ver que o lance que vence o leilão precisa ser minimamente maior ou igual ao lance do segundo colocado.
+
+\subsection{Leilão holandês}
+
+Ao contrário do leilão inglês, os preços, no holandês, são diminuídos com o tempo. O leiloeiro começa anunciando um preço presumidamente alto e segue diminuindo até que alguém aceite participar. O leilão é chamado de holandês, pois é o procedimento utilizado no mercado de flores de Amsterdã e quem diminui o preço é um relógio que é parado quando alguém decide comprar as flores pelo preço exibido \citet{Shoham2008}.
+
+\subsection{Leilão de envelope fechado}
+
+O leilão de envelope fechado funciona exatamente como o nome diz: todos os participantes submentem envelopes com seus lances que são abertos ``ao mesmo tempo'' de tal sorte que nenhum participante observa o lance do outro até a abertura dos envelopes. Como há apenas um lance por participante, o tempo dispendido para comunicação é bem menor \citet{karlin2017game}. A própria entrega de lances não precisa ser realizada de forma síncrona \citet{krishna}.
+
+Os dois modelos de leilão de envelope fechado mais conhecidos são o de primeiro (ou maior) preço e o de segundo preço, onde o valor pago pelo participante vencedor corresponde ao lance do segundo colocado.
+
+O leilão holandês e o de primeiro são estrategicamente equivalentes, isto é, possuem a mesma forma normal \citet{krishna}.
+
+Já os leilões inglês e de segundo preço são \emph{parecidos}, mas não equivalentes. Sob a hipótese de independência entre os valores privados, a estratégia ótima é a mesma \citet{krishna}. Contudo, pode haver alguma diferença considerando, por exemplo, o tamanho do passo no leilão inglês \citet{Shoham2008}.
+
+\subsection{Valoração}
+
+Se o leiloeiro soubesse exatamente quem atribui o maior valor ao produto que está a venda, não haveria sentido em se realizar um leilão, pois bastaria o leiloeiro vender o produto diretamente. Essa incerteza em relação à valoração é uma característica inerente ao leilão \citet{krishna}.
+
+Dependendo de como é a configuração dos lances, os demais participantes passam a conhecer, mesmo que parcialmente, a valoração de seus adversários. Num leilão inglês, à medida em que os lances são dados, mais informação sobre a valoração fica disponível para todos os participantes. Por outro lado, num leilão de envelope fechado a valoração só é conhecida quando da abertura dos envelopes.
+
+Esse acesso à informação pode mudar o comportamento dos agentes, pois pode revelar alguma informação sobre o bem à venda que não é conhecida para todos os participantes. O impacto depende da relação entre os agentes e o bem. É razoável que se o bem for um bem para consumo, conhecer a valoração de outros agentes não é tão relevante quanto na situação de um bem que se pretende revender, afinal, conhecer a valoração de outros participantes é bastante relevante nessa circunstância. A valoração dos demais participantes também é importante na ocasião de o próprio agente ter uma mera crença sobre o valor do bem que está em disputa. À medida em que mais lances são conhecidos essa crença pode ser atualizada.
+
+O caso onde a valoração dos demais participantes é irrelevante é chamado de \textbf{valores privados independentes}. Quando há alguma influência, chamamdos de \textbf{valores privados interdependentes}. Quando todos têm uma mesma valoração a situação é chamada de \textbf{valor comum} \citet{krishna}.
+
+\section{O modelo de um leilão}
+
+Dados $N$ jogadores, cada jogador $i$ atribui um valor privado $x_i$ ao objeto que está à venda e, portanto, não pagará mais do que $x_i$ por ele. Se o preço que venceu o leilão for $p$, o jogador que vencer ganhará $x_i - p$. Os outros jogadores ganharão zero.
+
+\begin{lema}
+    \label{estrategia-dominante}
+    Num leilão de segundo preço, o jogador $i$ não tem incentivo para dar um lance diferente de sua valoração $x_i$.
+\end{lema}
+\begin{proof}
+    Vamos olhar apenas para as situações onde o $i$ pode ganhar o leilão.
+
+    Se $i$ desviar e jogar $y_i > x_i$, um jogador $j$ pode jogar $y_j : y_i > y_j > x_i$. Nesse caso, $i$ ganha o leilão, mas pagará $y_j$, ficando com $x_i - y_j < 0$. Se tivesse jogado $x_i$, perderia 0.
+
+    Se $i$ desviar e jogar $w_i < x_i$, um jogador $j$ pode jogar $z_j : x_i > z_j > z_i$. Nesse caso, $i$ perde o leilão, mas poderia ter ganho $x_i - z_j > 0$.
+\end{proof}
+
+Em um leilão inglês, de uma forma parecida, só faz sentido o jogador $i$ permanecer dando lances enquanto o preço, $p$, for menor que $x_i$, pois isso maximiza sua utilidade independente do que fizerem os outros jogadores \citet{karlin2017game}. A estratégia do lema \ref{estrategia-dominante} também majora a utilidade do jogador $i$ independente dos outros jogadores. Em ambos os casos, a estratégia é uma estratégia dominante.
+
+Como os leilões holandês e de primeiro preço são estrategicamente equivalentes, basta tratarmos o leilão de primeiro preço.
+
+Ao contrário do leilão de segundo preço, não há uma estratégia dominante. Teremos de adicionar algumas propriedades ao modelo.
+
+O jogador $i$ ainda conhece sua valoração $x_i$, mas, agora, também sabe que a valoração de todos os jogadores segue uma distribuição de probabilidade acumulada $F()$, com derivada contínua e que assume valores não nulos em algum intervalo $[0, \omega]$. Essa configuração confere o caráter bayesiano ao jogo, pois plugamos o conjunto de tipos e a distribuição de probabilidade à priori ao modelo. Além disso, vamos assumir que os jogadores são \textbf{neutros ao risco}.
+
+Nosso objetivo é encontrar funções $\beta_i : [0, \omega] \xrightarrow{} \mathbb{R}$ que representem em equilíbrio os lances dos jogadores $i$ dada suas valorações. Como os jogadores são simétricos desejamos encontrar o equilíbrio de Nash simétrico, onde $\beta = \beta_i$ \citet{krishna}.
+
+Primeiramente, $\beta(0) = 0$, afinal nenhum jogador tem interesse em pagar por algo que vale 0. Além disso, parece razoável supor que $\beta()$ é crescente, pois, quanto mais valorizado o objeto, maior tende a ser o lance.
+
+Seja $b$ o lance do jogador $i$. Se o jogador $i$ vencer, $b > max_{j \ne i} \beta(X_j)$. Seja $Y$ a variável aleatória associada à maior valoração dentre os jogadores restantes, então:
+\begin{equation}
+b > \beta(Y) \Rightarrow Y < \beta^{-1}(b)    
+\end{equation}
+Como todas $X_i$ são independentes, a distribuição de $Y$ é $G(y) = F(x)^{n-1}$.
+
+O \emph{payoff} esperado do jogador $i$ é:
+\begin{equation}
+    P[vencer] (x_i - b) \Rightarrow \
+    G(\beta^{-1}(b) ) (x_i - b)
+\end{equation}
+
+Se maximizarmos para $b$ e assumirmos $b = \beta(x)$ podemos chegar no lema.
+
+\begin{lema}
+    A estratégia de equilíbrio simétrico num leilão de primeiro preço é dada por:
+    \begin{equation}
+        \beta(x) = \frac{1}{G(x)} \int_{0}^{x} yg(y)dy = E[Y|Y<x]
+    \end{equation}
+\end{lema}
+\begin{proof}
+    Ver \citet{krishna}.
+\end{proof}
+
+\section{Leilões multi-objeto}
+
+A principal simplificação do leilão unitário em relação ao leilão multi-objeto reside justamente no fato de não haver bens complementares nem bens substitutos nos lotes, uma vez que o objeto é unitário. Uma possibilidade de dar tratamento aos leilões multiunitários é justamente o leilão combinatório \citet{Shoham2008}. Contudo, há problemas práticos em se utilizar leilões combinatórios, pois sua solução exata é intratável de um ponto de vista computacional \citet{Nisan2007}. Aspectos jurídicos do emprego de licitações combinatórias, bem como um exemplo de seu uso no Brasil, são abordados em \citet{pellegrini2018:MSc}.
+
+\section{Pregões}
+
+Existem diversas formas de se abordar a otimização de processos licitatórios. Mas, talvez, a primeira pergunta a ser respondida, que aparece indiretamente em diversos artigos, é: qual a relação entre um leilão e um pregão? Tal pergunta foi formalizada em \citet{deCastro2010} com a prova de que a relação entre um pregão e um leilão é de dualidade, isto é, há um isomorfismo entre as estratégias empregadas num leilão (problema primal) e num pregão (problema dual). Esse resultado permite o emprego de resultados já consolidados na Teoria dos Leilões para atacar os problemas concernentes ao processo licitatório semelhantes aos da modalidade pregão.
+
+Não parece haver uma extensa literatura sobre o sistema de registro de preços. Um exemplo é \citet{barbosa2013}. Barbosa analisa o sistema de registro de preços do ponto de vista dos licitantes e mostra que dependendo do custo, o carona pode inviabilizar o processo de compra como um todo. Também discute que o registro de preços é um mecanismo linear, diferentemente dos mecanismos usuais: uniforme, discriminatório e de \emph{Vickrey}. Algumas questões que não são contempladas versam justamente sobre quando o registro de preços é mais adequado que o pregão comum bem como problemas de leilões como a \emph{maldição do vencedor}: o custo efetivo do fornecimento dos bens no registro de preço acaba sendo maior que o preço negociado.
+
+O problema da maldição do vencedor no contexto da nova lei de licitações é abordado por \citet{Signor2022}. A dinâmica de preços de reserva formado pela mediana de aquisições anteriores leva o preço a convergir ao preço mínimo exequível, ampliando o risco de o contrato não se concretizar. 
+
+Uma discussão sobre o efeito da publicação do preço de reserva em relação à estratégia dos licitantes pode ser encontrada em \citet{Bugarin2022}. Em particular, a divulgação, ou não, do preço de reserva só se torna relevante quando se sabe o número de participantes no certame.
+
+{\huge REESCREVER}
+
+O efeito da negociação nos certames também é abordado. Entretanto, o artigo não aborda casos de licitações com mais de um item, bem como a aquisição de bens via registro de preços.
+
+Há a preocupação com situações onde a qualidade do bem é relevante \citet{villa:2022}.
+
+{\huge FALAR SOBRE o CHE, MANELLI E MCMILLAN}
+
+A qualidade pode se tratar tanto da própria entrega do bem licitado quanto sobre alguma caraterística não-contratável, isto é, que não pode figurar diretamente no edital do certame, incentivando ofertantes de bens de baixa qualidade a atuarem de forma agressiva na fase de lances do certame. O primeiro caso pode configurar um problema de risco moral, pois pode ser mais vantajoso para o vencedor meramente não realizar a entrega do bem contratado. No contexto do registro de preços, pode acontecer justamente uma situação de maldição do vencedor, onde o fornecedor não consegue entregar todas as unidades do bem previstas no contrato. O segundo caso, por sua vez, é um caso de seleção adversa, uma vez que os licitantes com bens de maior qualidade não terão incentivos para participar do certame. Os autores propõem um mecanismo onde há a previsão não só de um preço de reserva, mas de um preço mínimo para a aquisição dos bens, o \emph{LoLA - Lowball Lottery Auction}.

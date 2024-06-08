@@ -1,0 +1,67 @@
+%!TeX root=../tese.tex
+%("dica" para o editor de texto: este arquivo é parte de um documento maior)
+% para saber mais: https://tex.stackexchange.com/q/78101
+
+%% ------------------------------------------------------------------------- %%
+
+% "\chapter" cria um capítulo com número e o coloca no sumário; "\chapter*"
+% cria um capítulo sem número e não o coloca no sumário. A introdução não
+% deve ser numerada, mas deve aparecer no sumário. Por conta disso, este
+% modelo define o comando "\unnumberedchapter".
+\unnumberedchapter{Introdução}
+\label{cap:introducao}
+
+\enlargethispage{.5\baselineskip}
+
+
+%% ------------------------------------------------------------------------- %%
+
+As compras no setor público são, em geral, disciplinadas pelo Artigo 37 da Constituição Federal, que diz, em seu inciso XXI, que \emph{as obras, serviços, compras e alienações serão contratados mediante processo de licitação pública}.
+
+Com o objetivo de realizar suas atividades a contento, os agentes públicos precisam adquirir bens e serviços, atendendo aos princípios que norteiam a administração pública\footnote{Podemos verificar alguns desses princípios no Artigo 5º da Lei Nº 14133.}. Contudo, o processo licitatório é bastante diferente da compra que o consumidor realiza usualmente.
+
+O primeiro entrave é que, embora seja possível sintetizar as características de um bem utilizando marca e modelo, licitar por marca e modelo não é permitido sem as devidas justificativas. Segue que é necessário o trabalho de especificar o bem a partir de suas características relevantes, levando-nos ao segundo entrave: nem toda característica do bem está disponível para montar a especificação. Ademais, a própria marca e modelo podem ser \emph{proxies} para a qualidade do produto desejado.
+
+O problema da especificação não é o único conjunto de entraves. Outra dificuldade do processo licitatório reside justamente em sua organização propriamente dita. Em particular, desejamos garantir ampla participação. Os principais instrumentos que temos à disposição são as condições presentes no edital, a organização dos lotes e, preservadas as hipóteses da Lei de Licitações, a escolha da modalidade. A Lei de Licitações também prevê o uso de um valor estimado\footnote{Artigos 23 e 58 da Lei de Licitações. Na literatura é conhecido por preço de reserva.}, desconhecido pelos participantes, não permitindo, por exemplo, a supressão de tal valor no certame mesmo que seja teoricamente interessante.
+
+A organização dos lotes consiste em decidir qual é a maneira ótima de dividir os diversos bens que se deseja adquirir num processo licitatório. Por exemplo, desejando-se adquirir os bens $A$ e $B$, é melhor proceder de forma separada? Ou seria mais adequado montar um lote com ambos os bens? A própria Lei de Licitações \citep{lei14133}, em seu Artigo 40, sugere considerar a viabilidade da divisão do objeto em lotes para aproveitar as peculiaridades do mercado local e ampliar a competição.
+
+As modalidades relevantes para o presente trabalho são: pregão e registro de preços. No pregão, o agente público escolhe tanto os bens quanto a quantidade demandada desses bens no momento da elaboração da etapa de planejamento da contratação. Homologado o processo, a empresa vencedora entrega a cesta de produtos usualmente pelo menor preço\footnote{De fato, a Lei de Licitações também prevê outras funções objetivo além do menor preço como a melhor técnica e o maior desconto.}.
+
+No registro de preços, por sua vez, é formado um contrato entre a entidade pública e a empresa vencedora para que seja ofertada \textbf{até} uma dada quantidade de bens, pelo prazo de um ano, pelo valor vencedor ofertado no certame. Isso significa que a entidade pública pode demandar, inclusive, zero unidades. O Artigo 40 da Lei de Licitações sugere o \emph{processamento por meio de sistema de registro de preços, quando pertinente}. Uma vantagem para o fornecedor do uso do sistema de registro de preços é que, em geral, é vedada a participação do órgão público em dois registros de preço com os mesmos objetos\footnote{A exceção é se o quantitativo registrado for inferior ao máximo previsto no edital.}. Do lado do órgão público, o registro de preços traz algumas vantagens como previsibilidade e celeridade, afinal não será necessário outro processo licitatório, tende a evitar problemas com estoque e a aumentar a precisão do dispêndio público. A Tabela \ref{tab:tabela1} exemplifica uma situação onde a licitação ocorreu no período 1 com a demanda total prevista de 60 unidades do objeto, tendo sido demandadas 50 unidades, ou seja, o uso do objeto diminuiu em relação ao estimado inicialmente.
+
+\begin{table}[]
+\centering
+\begin{tabular}{@{}llll@{}}
+\toprule
+período & regular & registro & evento                 \\ \midrule
+1       & 60      & 15       &                        \\
+2       & 0       & 15       &                        \\
+3       & 0       & 10       & uso do objeto diminuiu \\
+4       & 0       & 10       &                        \\
+total   & 60      & 50       &                        \\ \bottomrule
+\end{tabular}
+\caption{Exemplo comparando a aquisição de um dado objeto nas duas modalidades. No período 3, o uso do objeto diminuiu, diminuindo a quantidade efetivamente demandada.}
+\label{tab:tabela1}
+\end{table}
+
+A escolha do formato do processo licitatório, por sua vez, pode tanto espantar fornecedores, eventualmente fracassando, quanto fomentar a competição, garantindo resultados potencialmente desejáveis. O fornecedor, no exemplo dado na Tabela \ref{tab:tabela1}, vendeu 10 unidades a menos na modalidade de registro de preços, mas, por outro lado, pode ter suavizado suas vendas ao longo dos períodos.
+
+A pergunta que motiva o presente trabalho se deriva dessa possível ambiguidade. Quando cada um dos modelos é melhor?
+
+\unnumberedsection{Revisão Bibliográfica}
+\label{sec:revisao_bibliografica}
+
+Existem diversas formas de se abordar a otimização de processos licitatórios. Mas, talvez, a primeira pergunta a ser respondida, que aparece indiretamente em diversos artigos, é: qual a relação entre um leilão e uma licitação? Tal pergunta foi formalizada em \citep{deCastro2010} com a prova de que a relação entre uma licitação e um leilão é de dualidade, isto é, há um isomorfismo entre as estratégias empregadas num leilão (problema primal) e numa licitação (problema dual). Esse resultado permite o emprego de resultados já consolidados na Teoria dos Leilões para atacar os problemas concernentes ao processo licitatório. Diversos desses resultados podem ser encontrados em \citep{krishna}.
+
+O arcabouço de modelagem utilizado tanto para leilões quanto para licitações baseia-se no emprego de \emph{jogos bayesianos}. O objetivo é encontrar o conjunto de estratégias empregadas pelos jogadores em equilíbrio \citep{Bugarin2022, barbosa2013}.
+
+Não parece haver uma extensa literatura sobre o sistema de registro de preços. Um exemplo é \citep{barbosa2013}. Barbosa analisa o sistema de registro de preços do ponto de vista dos licitantes e mostra que dependendo do custo, o carona pode inviabilizar o processo de compra como um todo. Também discute que o registro de preços é um mecanismo linear, diferentemente dos mecanismos usuais: uniforme, discriminatório e de \emph{Vickrey}. Algumas questões que não são contempladas versam justamente sobre quando o registro de preços é mais adequado que o pregão comum bem como problemas de leilões como a \emph{maldição do vencedor}: o custo efetivo do fornecimento dos bens no registro de preço acaba sendo maior que o preço negociado.
+
+O problema da maldição do vencedor no contexto da nova lei de licitações é abordado por \citep{Signor2022}. A dinâmica de preços de reserva formado pela mediana de aquisições anteriores leva o preço a convergir ao preço mínimo exequível, ampliando o risco de o contrato não se concretizar. 
+
+Uma discussão sobre o efeito da publicação do preço de reserva em relação à estratégia dos licitantes pode ser encontrada em \citep{Bugarin2022}. Em particular, a divulgação, ou não, do preço de reserva só se torna relevante quando se sabe o número de participantes no certame. O efeito da negociação nos certames também é abordado. Entretanto, o artigo não aborda casos de licitações com mais de um item, bem como a aquisição de bens via registro de preços.
+
+Há a preocupação com situações onde a qualidade do bem é relevante \citep{villa:2022}. A qualidade pode se tratar tanto da própria entrega do bem licitado quanto sobre alguma caraterística não-contratável, isto é, que não pode figurar diretamente no edital do certame, incentivando ofertantes de bens de baixa qualidade a atuarem de forma agressiva na fase de lances do certame. O primeiro caso pode configurar um problema de risco moral, pois pode ser mais vantajoso para o vencedor meramente não realizar a entrega do bem contratado. No contexto do registro de preços, pode acontecer justamente uma situação de maldição do vencedor, onde o fornecedor não consegue entregar todas as unidades do bem previstas no contrato. O segundo caso, por sua vez, é um caso de seleção adversa, uma vez que os licitantes com bens de maior qualidade não terão incentivos para participar do certame. Os autores propõem um mecanismo onde há a previsão não só de um preço de reserva, mas de um preço mínimo para a aquisição dos bens, o \emph{LoLA - Lowball Lottery Auction}.
+
+A principal simplificação do leilão unitário em relação ao leilão multi-objeto reside justamente no fato de não haver bens complementares nem bens substitutos nos lotes, uma vez que o objeto é unitário. Uma possibilidade de dar tratamento aos leilões multiunitários é justamente o leilão combinatório \citep{Shoham2008}. Contudo, há problemas práticos em se utilizar leilões combinatórios, pois sua solução exata é intratável de um ponto de vista computacional \citep{Nisan2007}. Aspectos jurídicos do emprego de licitações combinatórias, bem como um exemplo de seu uso no Brasil, são abordados em \citep{pellegrini2018:MSc}.
