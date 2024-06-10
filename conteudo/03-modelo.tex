@@ -1,0 +1,38 @@
+%!TeX root=../projeto.tex
+%("dica" para o editor de texto: este arquivo é parte de um documento maior)
+% para saber mais: https://tex.stackexchange.com/q/78101
+
+%% ------------------------------------------------------------------------- %%
+
+% "\chapter" cria um capítulo com número e o coloca no sumário; "\chapter*"
+% cria um capítulo sem número e não o coloca no sumário. A introdução não
+% deve ser numerada, mas deve aparecer no sumário. Por conta disso, este
+% modelo define o comando "\unnumberedchapter".
+\chapter{Problema}
+\label{cap:problema}
+
+Pretende-se modelar algumas situações que envolvem pregões num espírito parecido com \citetitle{Bugarin2022}. A primeira diferença é que um pregão regular os bens são adquiridos como parte do processo enquanto que num pregão por registro de preços o que é ``adquirido'' é um contrato que prevê o direito de o órgão público adquirir os bens que estão no contrato pelo preço definido no certame, isto é, há a possibilidade de se adquirir \emph{zero} unidades.
+
+Tal diferença induz o modelo a adicionar uma ação para o pregoeiro: a possibilidade de adquirir um quantitativo menor que o quantitativo previsto no edital. Isso sugere a possibilidade de ambos os processos apresentarem equilíbrios diferentes.
+
+\section{Pregão por registro de preço}
+
+A hipótese simplificadora será a de que o órgão público demandará apenas um único bem, assim como no modelo apresentado por \citetitle{Bugarin2022}. Contudo, como na Lei n{\textordmasculine} 14.133 só admite menor preço ou maior desconto, o modelo de pregão é o de lances sucessivos e, portanto, melhor modelado por um pregão de segundo menor preço.
+
+O modelo de um pregão assume $N$ licitantes simétricos cuja ação prevista é a de dar um lance com o objetivo de maximizar seus \emph{payoffs}. Em caso de vitória, o \emph{payoff} é dado pela diferença entre o lance e o custo, que é o valor privado independente. Caso contrário, o \emph{payoff} será zero. Além disso, o pregoeiro pode demandar o bem, ou não, seguindo uma distribuição de probabilidade conhecida por todos os jogadores.
+
+Aqui existem duas possibilidades de modelagem sobre a aquisição do bem. Ela pode ser:
+\begin{enumerate}
+	\item independente do preço;
+	\item dependente do preço.
+\end{enumerate}
+
+Uma justificativa para o primeiro caso é o órgão público possuir renda o suficiente para adquirir o bem e a decisão de aquisição ser pautada por alguma razão interna ao órgão. Uma possibilidade seria a aquisição de computadores condicional à vinda de funcionários. Esse evento não possui relação com o lance dos jogadores e determina integralmente a aquisição.
+
+No segundo caso pode haver um certo raciocínio de custo-benefício a partir do órgão público. Nesse sentido, quanto menor o preço, maior a probabilidade de o bem ser adquirido.
+
+\subsection{Independência do preço}
+\subsection{Dependência do preço}
+
+\section{Pregão por registro de preço com qualidade}
+
