@@ -11,13 +11,13 @@
 \chapter{Problema}
 \label{cap:problema}
 
-Pretende-se modelar algumas situações que envolvem pregões num espírito parecido com \citetitle{Bugarin2022}. A primeira diferença é que um pregão regular os bens são adquiridos como parte do processo enquanto que num pregão por registro de preços o que é ``adquirido'' é um contrato que prevê o direito de o órgão público adquirir os bens que estão no contrato pelo preço definido no certame, isto é, há a possibilidade de se adquirir \emph{zero} unidades.
+Pretende-se modelar algumas situações que envolvem pregões num espírito parecido com \citet{Bugarin2022}. A primeira diferença é que um pregão regular os bens são adquiridos como parte do processo enquanto que num pregão por registro de preços o que é ``adquirido'' é um contrato que prevê o direito de o órgão público adquirir os bens que estão no contrato pelo preço definido no certame, isto é, há a possibilidade de se adquirir \emph{zero} unidades.
 
 Tal diferença induz o modelo a adicionar uma ação para o pregoeiro: a possibilidade de adquirir um quantitativo menor que o quantitativo previsto no edital. Isso sugere a possibilidade de ambos os processos apresentarem equilíbrios diferentes.
 
 \section{Pregão por registro de preço}
 
-A hipótese simplificadora será a de que o órgão público demandará apenas um único bem, assim como no modelo apresentado por \citetitle{Bugarin2022}. Contudo, como na Lei n{\textordmasculine} 14.133 só admite menor preço ou maior desconto, o modelo de pregão é o de lances sucessivos e, portanto, melhor modelado por um pregão de segundo menor preço.
+A hipótese simplificadora será a de que o órgão público demandará apenas um único bem, assim como no modelo apresentado por \citet{Bugarin2022}. Contudo, como na Lei n{\textordmasculine} 14.133 só admite menor preço ou maior desconto, o modelo de pregão é o de lances sucessivos e, portanto, melhor modelado por um pregão de segundo menor preço.
 
 O modelo de um pregão assume $N$ licitantes simétricos cuja ação prevista é a de dar um lance com o objetivo de maximizar seus \emph{payoffs}. Em caso de vitória, o \emph{payoff} é dado pela diferença entre o lance e o custo, que é o valor privado independente. Caso contrário, o \emph{payoff} será zero. Além disso, o pregoeiro pode demandar o bem, ou não, seguindo uma distribuição de probabilidade conhecida por todos os jogadores.
 
@@ -31,8 +31,8 @@ Uma justificativa para o primeiro caso é o órgão público possuir renda o suf
 
 No segundo caso pode haver um certo raciocínio de custo-benefício a partir do órgão público. Nesse sentido, quanto menor o preço, maior a probabilidade de o bem ser adquirido.
 
-\subsection{Independência do preço}
-\subsection{Dependência do preço}
+Contudo, por se tratar de um pregão de segundo preço, o segundo preço permanece sendo a valoração do segundo colocado, pois $\beta(x) = x$ continua sendo o menor lance possível para ele.
+
+Por outro lado, se fosse num pregão de primeiro preço
 
 \section{Pregão por registro de preço com qualidade}
-

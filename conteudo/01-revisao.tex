@@ -41,11 +41,11 @@ Ao contrário do leilão inglês, os preços, no holandês, são diminuídos com
 
 \subsection{Leilão de envelope fechado}
 
-O leilão de envelope fechado funciona exatamente como o nome diz: todos os participantes submentem envelopes com seus lances que são abertos ``ao mesmo tempo'' de tal sorte que nenhum participante observa o lance do outro até a abertura dos envelopes. Como há apenas um lance por participante, o tempo dispendido para comunicação é bem menor \citet{karlin2017game}. A própria entrega de lances não precisa ser realizada de forma síncrona \citet{krishna}.
+O leilão de envelope fechado funciona exatamente como o nome diz: todos os participantes submetem envelopes com seus lances que são abertos ``ao mesmo tempo'' de tal sorte que nenhum participante observa o lance do outro até a abertura dos envelopes. Como há apenas um lance por participante, o tempo despendido para comunicação é bem menor \citet{karlin2017game}. A própria entrega de lances não precisa ser realizada de forma síncrona \citet{krishna}.
 
 Os dois modelos de leilão de envelope fechado mais conhecidos são o de primeiro (ou maior) preço e o de segundo preço, onde o valor pago pelo participante vencedor corresponde ao lance do segundo colocado.
 
-O leilão holandês e o de primeiro são estrategicamente equivalentes, isto é, possuem a mesma forma normal \citet{krishna}.
+O leilão holandês e o de primeiro são estrategicamente equivalentes, isto é, possuem a mesma forma normal \citet{krishna}. Vale ressaltar que em ambos os formatos \emph{nenhuma} informação é dada até o momento em que há a determinação do vencedor.
 
 Já os leilões inglês e de segundo preço são \emph{parecidos}, mas não equivalentes. Sob a hipótese de independência entre os valores privados, a estratégia ótima é a mesma \citet{krishna}. Contudo, pode haver alguma diferença considerando, por exemplo, o tamanho do passo no leilão inglês \citet{Shoham2008}.
 
@@ -55,7 +55,7 @@ Se o leiloeiro soubesse exatamente quem atribui o maior valor ao produto que est
 
 Dependendo de como é a configuração dos lances, os demais participantes passam a conhecer, mesmo que parcialmente, a valoração de seus adversários. Num leilão inglês, à medida em que os lances são dados, mais informação sobre a valoração fica disponível para todos os participantes. Por outro lado, num leilão de envelope fechado a valoração só é conhecida quando da abertura dos envelopes.
 
-Esse acesso à informação pode mudar o comportamento dos agentes, pois pode revelar alguma informação sobre o bem à venda que não é conhecida para todos os participantes. O impacto depende da relação entre os agentes e o bem. É razoável que se o bem for um bem para consumo, conhecer a valoração de outros agentes não é tão relevante quanto na situação de um bem que se pretende revender, afinal, conhecer a valoração de outros participantes é bastante relevante nessa circunstância. A valoração dos demais participantes também é importante na ocasião de o próprio agente ter uma mera crença sobre o valor do bem que está em disputa. À medida em que mais lances são conhecidos essa crença pode ser atualizada.
+Esse acesso à informação pode mudar o comportamento dos agentes, pois pode revelar alguma informação sobre o bem à venda que não é conhecida para todos os participantes. O impacto depende da relação entre os agentes e o bem. É razoável que se o bem for para consumo, conhecer a valoração de outros agentes não é tão relevante. Entretanto, se o objetivo for revender, vale a pena conhecer a valoração dos outros participantes para se ter uma ideia do mercado. Essa informação também é importante na ocasião de o próprio agente ter uma mera crença sobre o valor do bem que está em disputa. À medida em que mais lances são conhecidos essa crença pode ser atualizada.
 
 O caso onde a valoração dos demais participantes é irrelevante é chamado de \textbf{valores privados independentes}. Quando há alguma influência, chamamdos de \textbf{valores privados interdependentes}. Quando todos têm uma mesma valoração a situação é chamada de \textbf{valor comum} \citet{krishna}.
 
@@ -63,9 +63,11 @@ O caso onde a valoração dos demais participantes é irrelevante é chamado de 
 
 Dados $N$ jogadores, cada jogador $i$ atribui um valor privado $x_i$ ao objeto que está à venda e, portanto, não pagará mais do que $x_i$ por ele. Se o preço que venceu o leilão for $p$, o jogador que vencer ganhará $x_i - p$. Os outros jogadores ganharão zero.
 
+Primeiramente, vamos estudar como os jogadores determinam a função de lance, $\beta_i$. A função de lance depende exclusivamente do valor privado do jogador.
+
 \begin{lema}
     \label{estrategia-dominante}
-    Num leilão de segundo preço, o jogador $i$ não tem incentivo para dar um lance diferente de sua valoração $x_i$.
+    Num leilão de segundo preço, o jogador $i$ não tem incentivo para dar um lance diferente de sua valoração $x_i$. Isto é, $\beta_{i}(x_i) = x_i$.
 \end{lema}
 \begin{proof}
     Vamos olhar apenas para as situações onde o $i$ pode ganhar o leilão.
@@ -77,29 +79,36 @@ Dados $N$ jogadores, cada jogador $i$ atribui um valor privado $x_i$ ao objeto q
 
 Em um leilão inglês, de uma forma parecida, só faz sentido o jogador $i$ permanecer dando lances enquanto o preço, $p$, for menor que $x_i$, pois isso maximiza sua utilidade independente do que fizerem os outros jogadores \citet{karlin2017game}. A estratégia do lema \ref{estrategia-dominante} também majora a utilidade do jogador $i$ independente dos outros jogadores. Em ambos os casos, a estratégia é uma estratégia dominante.
 
-Como os leilões holandês e de primeiro preço são estrategicamente equivalentes, basta tratarmos o leilão de primeiro preço.
+Como os leilões holandês e de primeiro preço são estrategicamente equivalentes, basta tratarmos o leilão de primeiro preço. Mas, ao contrário do leilão de segundo preço, não há uma estratégia dominante. Teremos de adicionar algumas propriedades ao modelo.
 
-Ao contrário do leilão de segundo preço, não há uma estratégia dominante. Teremos de adicionar algumas propriedades ao modelo.
+O jogador $i$ ainda conhece sua valoração $x_i$, mas, agora, também sabe que a valoração de todos os jogadores segue uma distribuição de probabilidade acumulada $F$, com derivada contínua e que assume valores não nulos em algum intervalo $[0, \omega]$. Essa configuração confere o caráter bayesiano ao jogo, pois plugamos o conjunto de tipos e a distribuição de probabilidade à priori ao modelo. Além disso, vamos assumir que os jogadores são \textbf{neutros ao risco}.
 
-O jogador $i$ ainda conhece sua valoração $x_i$, mas, agora, também sabe que a valoração de todos os jogadores segue uma distribuição de probabilidade acumulada $F()$, com derivada contínua e que assume valores não nulos em algum intervalo $[0, \omega]$. Essa configuração confere o caráter bayesiano ao jogo, pois plugamos o conjunto de tipos e a distribuição de probabilidade à priori ao modelo. Além disso, vamos assumir que os jogadores são \textbf{neutros ao risco}.
+Recapitulando, valem as propriedades \citet{krishna}:
+\begin{itemize}
+	\item Independência dos valores privados;
+	\item Neutralidade a risco;
+	\item Não há restrição orçamentária para os agentes;
+	\item Simetria.
+\end{itemize}
 
 Nosso objetivo é encontrar funções $\beta_i : [0, \omega] \xrightarrow{} \mathbb{R}$ que representem em equilíbrio os lances dos jogadores $i$ dada suas valorações. Como os jogadores são simétricos desejamos encontrar o equilíbrio de Nash simétrico, onde $\beta = \beta_i$ \citet{krishna}.
 
-Primeiramente, $\beta(0) = 0$, afinal nenhum jogador tem interesse em pagar por algo que vale 0. Além disso, parece razoável supor que $\beta()$ é crescente, pois, quanto mais valorizado o objeto, maior tende a ser o lance.
+Primeiramente, $\beta(0) = 0$, afinal nenhum jogador tem interesse em pagar por algo que vale 0 para si. Além disso, parece razoável supor que $\beta$ é crescente, pois, quanto mais valorizado o objeto, maior tende a ser o lance.
 
 Seja $b$ o lance do jogador $i$. Se o jogador $i$ vencer, $b > max_{j \ne i} \beta(X_j)$. Seja $Y$ a variável aleatória associada à maior valoração dentre os jogadores restantes, então:
 \begin{equation}
 b > \beta(Y) \Rightarrow Y < \beta^{-1}(b)    
 \end{equation}
-Como todas $X_i$ são independentes, a distribuição de $Y$ é $G(y) = F(x)^{n-1}$.
+Como todas $X_i$ são independentes, a distribuição de $Y$ é a estatística de ordem do máximo, isto é, $G(y) = F(x)^{n-1}$. Usamos $n-1$, pois são $n-1$ outros participantes em relação ao utilizado para encontrar a função lance.
 
 O \emph{payoff} esperado do jogador $i$ é:
 \begin{equation}
     P[vencer] (x_i - b) \Rightarrow \
-    G(\beta^{-1}(b) ) (x_i - b)
+    G(\beta^{-1}(b)) (x_i - b)
 \end{equation}
 
-Se maximizarmos para $b$ e assumirmos $b = \beta(x)$ podemos chegar no lema.
+Como todos os jogadores implementam a melhor resposta em um equilíbrio de Nash, vamos maximizar para $b$. Por simplicidade, vamos remover o $i$ subscrito.
+
 
 \begin{lema}
     A estratégia de equilíbrio simétrico num leilão de primeiro preço é dada por:
