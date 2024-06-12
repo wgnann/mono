@@ -65,6 +65,8 @@ Dados $N$ jogadores, cada jogador $i$ atribui um valor privado $x_i$ ao objeto q
 
 Primeiramente, vamos estudar como os jogadores determinam a função de lance, $\beta_i$. A função de lance depende exclusivamente do valor privado do jogador.
 
+\subsection{O lance no leilão segundo preço}
+
 \begin{lema}
     \label{estrategia-dominante}
     Num leilão de segundo preço, o jogador $i$ não tem incentivo para dar um lance diferente de sua valoração $x_i$. Isto é, $\beta_{i}(x_i) = x_i$.
@@ -78,6 +80,8 @@ Primeiramente, vamos estudar como os jogadores determinam a função de lance, $
 \end{proof}
 
 Em um leilão inglês, de uma forma parecida, só faz sentido o jogador $i$ permanecer dando lances enquanto o preço, $p$, for menor que $x_i$, pois isso maximiza sua utilidade independente do que fizerem os outros jogadores \citet{karlin2017game}. A estratégia do lema \ref{estrategia-dominante} também majora a utilidade do jogador $i$ independente dos outros jogadores. Em ambos os casos, a estratégia é uma estratégia dominante.
+
+\subsection{O lance no leilão de primeiro preço}
 
 Como os leilões holandês e de primeiro preço são estrategicamente equivalentes, basta tratarmos o leilão de primeiro preço. Mas, ao contrário do leilão de segundo preço, não há uma estratégia dominante. Teremos de adicionar algumas propriedades ao modelo.
 
@@ -108,17 +112,51 @@ O \emph{payoff} esperado do jogador $i$ é:
 \end{equation}
 
 Como todos os jogadores implementam a melhor resposta em um equilíbrio de Nash, vamos maximizar para $b$. Por simplicidade, vamos remover o $i$ subscrito.
+\begin{align*}
+	\frac{d G(\beta^{-1}(b)) (x - b)}{db} & = 0 & \Rightarrow \\
+	\frac{ g( \beta^{-1}(b) ) }{ \beta'( \beta^{-1}(b) ) }(x - b) - G( \beta^{-1}(b) ) & = 0 & \Rightarrow \\
+	G( \beta^{-1}(b) )\beta'( {\beta^{-1}(b)} ) & = g( \beta^{-1}(b) )(x - b) & \Rightarrow \\
+	g(\beta^{-1}(b))b + G(\beta^{-1}(b))\beta'({\beta^{-1}(b)}) & = g(\beta^{-1}(b))x
+\end{align*}
 
+Aplicando a hipótese de simetria, $b = \beta(x)$, segue que:
+\begin{align*}
+	g(x)\beta(x) + G(x)\beta'(x) & = xg(x) & \Rightarrow \\
+	\frac{d}{dx} \beta(x)G(x) & = xg(x) & \Rightarrow \\
+	\left[ \beta(x)G(x) \right]_{0}^{x} & = \int_{0}^{x} yg(y)dy & \Rightarrow \\
+	\beta(x)G(x) - \cancelto{0}{\beta(0)}G(0) & = \int_{0}^{x} yg(y)dy
+\end{align*}
 
 \begin{lema}
     A estratégia de equilíbrio simétrico num leilão de primeiro preço é dada por:
     \begin{equation}
-        \beta(x) = \frac{1}{G(x)} \int_{0}^{x} yg(y)dy = E[Y|Y<x]
+        \beta(x) = \frac{1}{G(x)} \int_{0}^{x} yg(y)dy = E\left[ Y \mid Y<x \right] = x - \int_{0}^{x} \frac{G(y)}{G(x)}dy
     \end{equation}
 \end{lema}
 \begin{proof}
-    Ver \citet{krishna}.
+	A prova de que a \beta encontrada acima é a melhor resposta encontra-se em \citet{krishna}.
 \end{proof}
+
+Findos os lances, agora vamos determinar quanto o vencedor pagará em cada situação.
+
+\subsection{O pagamento}
+
+No leilão de primeiro preço é imediato, o pagamento esperado é dado pelo maior lance esperado, que é: $G(x)E\left[ Y \mid Y<x \right]$, onde $G(x)$ é a probabilidade de o jogador ganhar o certame com o lance $x$.
+
+O pagamento no leilão de segundo preço é dado pelo segundo maior lance. Como $\beta(x) = x$, o pagamento esperado no leilão de segundo preço será dado pelo segundo maior valor, resultando em: $G(x)E\left[ Y \mid Y<x \right]$.
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{@{}llll@{}}
+		\toprule
+		tipo      & primeiro 					     & segundo      					\\ \midrule
+		lance     & $E\left[ Y \mid Y<x \right]$     & $x$             					\\
+		pagamento & $G(x)E\left[ Y \mid Y<x \right]$ & $G(x)E\left[ Y \mid Y<x \right]$ \\
+		receita   & $E\left[ Y_2 \right]$            & $E\left[ Y_2 \right]$            \\
+	\end{tabular}
+	\caption{Comparativo entre os dois modelos de leilão.}
+	\label{tab:tabela1}
+\end{table}
 
 \section{Leilões multi-objeto}
 
