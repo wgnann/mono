@@ -1,26 +1,19 @@
-\chapter{Apêndice}
+\chapter{Demonstrações}
 \label{cap:apendice}
 
 \section{Estratégia dominante no leilão de segundo preço}
-\begin{lema}
-	Num leilão de segundo preço, o jogador $i$ não tem incentivo para dar um lance diferente de sua valoração $x_i$. Isto é, $\beta_{i}(x_i) = x_i$.
-\end{lema}
-\begin{proof}
+\begin{proof}[Prova do Lema \ref{lema:estrategia-dominante}]
 	Vamos olhar apenas para as situações onde o $i$ pode ganhar o leilão.
 	
 	Se $i$ desviar e jogar $y_i > x_i$, um jogador $j$ pode jogar $y_j : y_i > y_j > x_i$. Nesse caso, $i$ ganha o leilão, mas pagará $y_j$, ficando com $x_i - y_j < 0$. Se tivesse jogado $x_i$, perderia 0.
 	
-	Se $i$ desviar e jogar $w_i < x_i$, um jogador $j$ pode jogar $z_j : x_i > z_j > z_i$. Nesse caso, $i$ perde o leilão, mas poderia ter ganho $x_i - z_j > 0$.
+	Se $i$ desviar e jogar $z_i < x_i$, um jogador $j$ pode jogar $z_j : x_i > z_j > z_i$. Nesse caso, $i$ perde o leilão, mas poderia ter ganho $x_i - z_j > 0$.
+	
+	Portanto $\beta(x_i) = x_i$.
 \end{proof}
 
 \section{Lance no leilão de primeiro preço}
-\begin{lema}
-	A estratégia de equilíbrio simétrico num leilão de primeiro preço é dada por:
-	\begin{equation}
-		\beta(x) = \frac{1}{G(x)} \int_{0}^{x} yg(y)dy = E\left[ Y \mid Y<x \right] = x - \int_{0}^{x} \frac{G(y)}{G(x)}dy
-	\end{equation}
-\end{lema}
-\begin{proof}
+\begin{proof}[Prova do Lema \ref{lema:nash-primeiro-preco}]
 	Como todos os jogadores implementam a melhor resposta em um equilíbrio de Nash, vamos maximizar para $b$. Por simplicidade, vamos remover o $i$ subscrito.
 	\begin{align*}
 		\frac{d G(\beta^{-1}(b)) (x - b)}{db} & = 0 & \Rightarrow \\
@@ -34,6 +27,31 @@
 		g(x)\beta(x) + G(x)\beta'(x) & = xg(x) & \Rightarrow \\
 		\frac{d}{dx} \beta(x)G(x) & = xg(x) & \Rightarrow \\
 		\left[ \beta(x)G(x) \right]_{0}^{x} & = \int_{0}^{x} yg(y)dy & \Rightarrow \\
-		\beta(x)G(x) - \cancelto{0}{\beta(0)}G(0) & = \int_{0}^{x} yg(y)dy
+		\beta(x)G(x) - \cancelto{0}{\beta(0)G(0)} & = \int_{0}^{x} yg(y)dy & \Rightarrow \\
+		\beta(x) & = \frac{1}{G(x)} \int_{0}^{x} yg(y)dy
 	\end{align*}
+\end{proof}
+
+\section{Lance no leilão de primeiro preço com opção de aquisição}
+\begin{proof}[Prova do Lema \ref{lema:nash-primeiro-preco-opcao}]
+	Como todos os jogadores implementam a melhor resposta em um equilíbrio de Nash, vamos maximizar para $b$.
+	
+	\begin{align*}
+		& \frac{d H(\beta^{-1}(b)) G(\beta^{-1}(b)) (x - b)}{db} = 0 & \Rightarrow \\
+		\frac { h(\bbeta}{\dinvbeta} \left[ G(\bbeta)(x - b) \right] & + H(\bbeta) \left[ \frac{g(\bbeta)}{\dinvbeta}(x - b) - G(\bbeta) \right] = 0 & \Rightarrow \\
+		h(\bbeta) \left[ G(\bbeta)(x - b) \right] & + H(\bbeta) \left[ g(\bbeta)(x - b) \right] = H(\bbeta)G(\bbeta)\dinvbeta
+	\end{align*}
+
+	Aplicando a hipótese de simetria, $b = \beta(x)$, segue que:
+	\begin{align*}
+		h(x)G(x)(x-\beta(x)) + H(x)g(x)(x-\beta(x)) & = H(x)G(x)\beta'(x) & \Rightarrow \\
+		\left[ h(x)G(x) + H(x)g(x) \right]x & = \left[ h(x)G(x) + H(x)g(x) \right]\beta(x) + H(x)G(x)\beta'(x) & \Rightarrow \\
+		\frac {d H(x)G(x) }{dx} x & = \frac{d H(x)G(x)\beta(x)}{dx} & \Rightarrow \\
+		\int_0^x \frac {d H(y)G(y) }{dy} ydy & = \int_0^x \frac{d H(y)G(y)\beta(y)}{dy}dy & \Rightarrow \\
+    	\int_0^x (H(y)G(y))'ydy & = H(x)G(x)\beta(x) - \cancelto{0}{H(0)G(0)\beta(0)} & \Rightarrow \\
+    	\left[ H(y)G(y)y \right]_0^x - \int_0^x H(y)G(y)dy & = H(x)G(x)\beta(x) & \Rightarrow \\
+    	H(x)G(x)x - \int_0^x H(y)G(y)dy & = H(x)G(x)\beta(x) & \Rightarrow \\
+    	\beta(x) & = x - \int_0^x \frac{H(y)G(y)}{H(x)G(x)}dy
+	\end{align*}
+
 \end{proof}

@@ -1,5 +1,5 @@
-\chapter{Problema}
-\label{cap:problema}
+\chapter{Modelo}
+\label{cap:modelo}
 
 Pretende-se modelar algumas situações que envolvem pregões num espírito parecido com \citet{Bugarin2022}. A primeira diferença é que um pregão regular os bens são adquiridos como parte do processo enquanto que num pregão por registro de preços o que é ``adquirido'' é um contrato que prevê o direito de o órgão público adquirir os bens que estão no contrato pelo preço definido no certame, isto é, há a possibilidade de se adquirir \emph{zero} unidades.
 
@@ -9,7 +9,7 @@ Tal diferença induz o modelo a adicionar uma ação para o pregoeiro: a possibi
 
 A hipótese simplificadora será a de que o órgão público demandará apenas um único bem, assim como no modelo apresentado por \citet{Bugarin2022}. Contudo, como na Lei n{\textordmasculine} 14.133 só admite menor preço ou maior desconto, o modelo de pregão é o de lances sucessivos e, portanto, melhor modelado por um pregão de segundo menor preço.
 
-O modelo de um pregão assume $N$ licitantes simétricos cuja ação prevista é a de dar um lance com o objetivo de maximizar seus \emph{payoffs}. Em caso de vitória, o \emph{payoff} é dado pela diferença entre o lance e o custo, que é o valor privado independente. Caso contrário, o \emph{payoff} será zero. Além disso, o pregoeiro pode demandar o bem, ou não, seguindo uma distribuição de probabilidade conhecida por todos os jogadores.
+O modelo de um pregão assume $N$ licitantes simétricos cuja ação prevista é a de dar um lance com o objetivo de maximizar o \emph{payoff}. Em caso de vitória, ganha-se diferença entre o lance e o custo, valor privado independente. Caso contrário, o \emph{payoff} será zero. Além disso, o pregoeiro pode demandar o bem, ou não, seguindo uma distribuição de probabilidade conhecida por todos os jogadores.
 
 Aqui existem duas possibilidades de modelagem sobre a aquisição do bem. Ela pode ser:
 \begin{enumerate}
@@ -21,8 +21,23 @@ Uma justificativa para o primeiro caso é o órgão público possuir renda o suf
 
 No segundo caso pode haver um certo raciocínio de custo-benefício a partir do órgão público. Nesse sentido, quanto menor o preço, maior a probabilidade de o bem ser adquirido.
 
-Contudo, por se tratar de um pregão de segundo preço, o segundo preço permanece sendo a valoração do segundo colocado, pois $\beta(x) = x$ continua sendo o menor lance possível para ele.
+Analisaremos o caso dual com o objetivo de compreender o comportamento de equilíbrio.
 
-Por outro lado, se fosse num pregão de primeiro preço
+\section{Leilão de primeiro preço com opção de aquisição}
+
+Um leilão de primeiro preço com opção de aquisição é um leilão como visto no capítulo \ref{cap:revisao} com o adicional de que o vendedor pode decidir \textbf{não} vender o bem considerando o lance ganhador. Uma forma de interpretar é imaginar que há um preço de reserva oculto \citet{Bugarin2022}. Outra interpretação é que o único jeito, no mundo restrito do modelo, de o participante sinalizar para o leiloeiro seu interesse no bem é pelo lance, embora esse lance possa conter informação de outras naturezas como o \emph{score} de crédito do participante ou alguma medida de credibilidade.
+
+Seja $H()$ a função de probabilidade acumulada do leiloeiro, o \emph{payoff} esperado será determinado por:
+\begin{align*}
+	P[vender]P[vencer](x_i - b) \Rightarrow H(\beta^{-1}(b))G(\beta^{-1}(b))(x_i - b)
+\end{align*}
+
+\begin{lema}
+	\label{lema:nash-primeiro-preco-opcao}
+	A estratégia de equilíbrio simétrico num leilão de primeiro preço com a opção de não se adquirir o bem é dada por:
+	\begin{equation}
+		\beta(x) = x - \int_0^x \frac{G(y)H(y)}{G(x)H(x)}dy
+	\end{equation}
+\end{lema}
 
 \section{Pregão por registro de preço com qualidade}

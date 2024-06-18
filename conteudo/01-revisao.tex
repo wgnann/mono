@@ -58,11 +58,11 @@ Primeiramente, vamos estudar como os jogadores determinam a função de lance, $
 \subsection{O lance no leilão segundo preço}
 
 \begin{lema}
-    \label{estrategia-dominante}
+    \label{lema:estrategia-dominante}
     Num leilão de segundo preço, o jogador $i$ não tem incentivo para dar um lance diferente de sua valoração $x_i$. Isto é, $\beta_{i}(x_i) = x_i$.
 \end{lema}
 
-Em um leilão inglês, de uma forma parecida, só faz sentido o jogador $i$ permanecer dando lances enquanto o preço, $p$, for menor que $x_i$, pois isso maximiza sua utilidade independente do que fizerem os outros jogadores \citet{karlin2017game}. A estratégia do lema \ref{estrategia-dominante} também majora a utilidade do jogador $i$ independente dos outros jogadores. Em ambos os casos, a estratégia é uma estratégia dominante. É importante ressaltar que essa escolha acontece \emph{independentemente do perfil de risco} dos jogadores \citet{Shoham2008}.
+Em um leilão inglês, de uma forma parecida, só faz sentido o jogador $i$ permanecer dando lances enquanto o preço, $p$, for menor que $x_i$, pois isso maximiza sua utilidade independente do que fizerem os outros jogadores \citet{karlin2017game}. A estratégia do lema \ref{lema:estrategia-dominante} também majora a utilidade do jogador $i$ independente dos outros jogadores. Em ambos os casos, a estratégia é uma estratégia dominante. É importante ressaltar que essa escolha acontece \emph{independentemente do perfil de risco} dos jogadores \citet{Shoham2008}.
 
 \subsection{O lance no leilão de primeiro preço}
 
@@ -97,6 +97,7 @@ O \emph{payoff} esperado do jogador $i$ é:
 Basta encontrar o $b$ que maximiza o \emph{payoff}.
 
 \begin{lema}
+    \label{lema:nash-primeiro-preco}
     A estratégia de equilíbrio simétrico num leilão de primeiro preço é dada por:
     \begin{equation}
         \beta(x) = \frac{1}{G(x)} \int_{0}^{x} yg(y)dy = E\left[ Y \mid Y<x \right] = x - \int_{0}^{x} \frac{G(y)}{G(x)}dy
