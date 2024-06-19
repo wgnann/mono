@@ -40,4 +40,39 @@ Seja $H()$ a função de probabilidade acumulada do leiloeiro, o \emph{payoff} e
 	\end{equation}
 \end{lema}
 
-\section{Pregão por registro de preço com qualidade}
+O pagamento esperado realizado pelo vencedor será:
+\begin{equation}
+	H(x)G(x) \left[ x - \int_0^x \frac{G(y)H(y)}{G(x)H(x)}dx \right] = \int_0^x y(G(y)h(y)+H(y)g(y)) dy
+\end{equation}
+
+\section{Leilão de segundo preço com opção de aquisição}
+
+\begin{lema}
+	\label{lema:nash-segundo-preco-opcao}
+	A estratégia de equilíbrio simétrico num leilão de segundo preço como a opção de não se adquirir o bem é dada por:
+	\begin{equation}
+		\beta(x) = x + h(x)\int_0^x \frac{\beta'(y)G(y)dy}{G(x)h(x) + H(x)g(x)}
+	\end{equation}
+\end{lema}
+
+\section{Pregão de segundo preço por registro de preços}
+
+\begin{lema}
+	\label{lema:nash-pregao-segundo-preco-rp}
+	A estratégia de equilíbrio simétrico num pregão de segundo preço por registro de preços é dada por:
+	\begin{equation}
+		\beta(x) = x - h(x)\int_x^1 \frac{\beta'(y)[1-G(y)]dy}{[1-G(x)][1-h(x)] + [1-H(x)][1-g(x)]}
+	\end{equation}
+\end{lema}
+
+\section{Pregão de segundo preço por registro de preços com qualidade}
+
+\begin{lema}
+	Com leilões (reversos) de primeiro e de segundo preço, a qualidade é escolhida em $q_s(\theta)$ para $\theta \in [0, 1]$ onde:
+	\begin{equation}
+		q_s(\theta) = \text{argmax } s(q) - c(q, \theta)
+	\end{equation}
+	\begin{proof}
+		Em \citet{Che1993}.
+	\end{proof}
+\end{lema}

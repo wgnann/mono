@@ -53,5 +53,28 @@
     	H(x)G(x)x - \int_0^x H(y)G(y)dy & = H(x)G(x)\beta(x) & \Rightarrow \\
     	\beta(x) & = x - \int_0^x \frac{H(y)G(y)}{H(x)G(x)}dy
 	\end{align*}
+\end{proof}
 
+\section{Lance no leilão de segundo preço com opção de aquisição}
+\begin{proof}[Prova do Lema \ref{lema:nash-segundo-preco-opcao}]
+	A diferença entre os leilões de primeiro e de segundo preço é de natureza de \emph{payoff}, além disso, valem as condições para o Teorema da Equivalência de Receita.
+
+	Seja $m(x)$ o pagamento no leilão de primeiro preço:
+	\begin{equation*}
+		m(x) = \int_0^x y(G(y)h(y)+H(y)g(y)) dy
+	\end{equation*}
+
+	Por outro lado, considerando $Y$ a estatística de maior ordem dos outros $n-1$ participantes, o pagamento no leilão de segundo preço será:
+	\begin{equation*}
+		m(x) = H(x)G(x)E[\beta(Y) \mid Y<x] = H(x) \int_0^x \beta(y)g(y)dy
+	\end{equation*}
+
+	Igualando os pagamentos e derivando em relação a $x$:
+	\begin{align*}
+		\frac{d}{dx} \left[ H(x) \int_0^x \beta(y)g(y)dy \right] & = \frac{d}{dx} \int_0^x y(G(y)h(y)+H(y)g(y)) dy & \Rightarrow \\
+		h(x) \int_0^x \beta(y)g(y)dy + H(x)\beta(x)g(x) & = x\left[ G(x)h(x) + H(x)g(x) \right] & \Rightarrow \\
+		h(x) \left[ \left[ \beta(x)G(x) \right]_0^x - \int_0^x \beta'(y)G(y)dy \right] + H(x)\beta(x)g(x) & = x\left[ G(x)h(x) + H(x)g(x) \right] & \Rightarrow \\
+		\left[ G(x)h(x) + H(x)g(x) \right]\beta(x) - h(x) \int_0^x \beta'(y)G(y)dy & = x\left[ G(x)h(x) + H(x)g(x) \right] & \Rightarrow \\
+		\beta(x) = x + h(x) \int_0^x \frac{\beta'(y)G(y)}{G(x)h(x) + H(x)g(x)}dy
+	\end{align*}
 \end{proof}
