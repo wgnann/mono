@@ -61,9 +61,12 @@ O pagamento esperado realizado pelo vencedor será:
 	\label{lema:nash-pregao-segundo-preco-rp}
 	A estratégia de equilíbrio simétrico num pregão de segundo preço por registro de preços é dada por:
 	\begin{equation}
-		\beta(x) = x - h(x)\int_x^1 \frac{\beta'(y)[1-G(y)]dy}{[1-G(x)][1-h(x)] + [1-H(x)][1-g(x)]}
+		\beta(x) = x - h(x)\int_x^1 \frac{\beta'(y)[1-G(y)]dy}{[1-G(x)]h(x) + [1-H(x)]g(x)}
 	\end{equation}
 \end{lema}
+\begin{proof}
+	Trata-se do caso dual do resultado do lema \ref{lema:nash-segundo-preco-opcao}.
+\end{proof}
 
 \section{Pregão de segundo preço por registro de preços com qualidade}
 
