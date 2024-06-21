@@ -2,7 +2,7 @@
 \label{cap:apendice}
 
 \section{Estratégia dominante no leilão de segundo preço}
-\begin{proof}[Prova do Lema \ref{lema:estrategia-dominante}]
+\begin{proof}[Prova da Proposição \ref{prop:estrategia-dominante}]
 	Vamos olhar apenas para as situações onde o $i$ pode ganhar o leilão.
 	
 	Se $i$ desviar e jogar $y_i > x_i$, um jogador $j$ pode jogar $y_j : y_i > y_j > x_i$. Nesse caso, $i$ ganha o leilão, mas pagará $y_j$, ficando com $x_i - y_j < 0$. Se tivesse jogado $x_i$, perderia 0.
@@ -13,73 +13,177 @@
 \end{proof}
 
 \section{Lance no leilão de primeiro preço}
-\begin{proof}[Prova do Lema \ref{lema:nash-primeiro-preco}]
+\begin{proof}[Prova da Proposição \ref{prop:nash-primeiro-preco}]
 	Como todos os jogadores implementam a melhor resposta em um equilíbrio de Nash, vamos maximizar para $b$. Por simplicidade, vamos remover o $i$ subscrito.
-	\begin{gather*}
-		\frac{d G(\beta^{-1}(b)) (x - b)}{db} = 0 \Rightarrow \\
-		\frac{ g( \beta^{-1}(b) ) }{ \beta'( \beta^{-1}(b) ) }(x - b) - G( \beta^{-1}(b) ) = 0 \Rightarrow \\
-		G( \beta^{-1}(b) )\beta'( {\beta^{-1}(b)} ) = g( \beta^{-1}(b) )(x - b) \Rightarrow \\
+	\begin{align*}
+		\frac{d G(\beta^{-1}(b)) (x - b)}{db} = 0 \Rightarrow
+	\end{align*}
+	\begin{align*}
+		\frac{ g( \beta^{-1}(b) ) }{ \beta'( \beta^{-1}(b) ) }(x - b) - G( \beta^{-1}(b) ) = 0 \Rightarrow
+	\end{align*}
+	\begin{align*}
+		G( \beta^{-1}(b) )\beta'( {\beta^{-1}(b)} ) = g( \beta^{-1}(b) )(x - b) \Rightarrow
+	\end{align*}
+	\begin{align*}
 		g(\beta^{-1}(b))b + G(\beta^{-1}(b))\beta'({\beta^{-1}(b)}) = g(\beta^{-1}(b))x
-	\end{gather*}
+	\end{align*}
+
 	Aplicando a hipótese de simetria, $b = \beta(x)$, segue que:
 	\begin{align*}
-		g(x)\beta(x) + G(x)\beta'(x) & = xg(x) \Rightarrow \\
-		\frac{d}{dx} \beta(x)G(x) & = xg(x) \Rightarrow \\
-		\left[ \beta(x)G(x) \right]_{0}^{x} & = \int_{0}^{x} yg(y)dy \Rightarrow \\
+		g(x)\beta(x) + G(x)\beta'(x) & = xg(x) \Rightarrow
+	\end{align*}
+	\begin{align*}
+		\frac{d}{dx} \beta(x)G(x) & = xg(x) \Rightarrow
+	\end{align*}
+	\begin{align*}
+		\left[ \beta(x)G(x) \right]_{0}^{x} & = \int_{0}^{x} yg(y)dy \Rightarrow
+	\end{align*}
+	\begin{align*}
 		\beta(x)G(x) - \cancelto{0}{\beta(0)G(0)} & = \int_{0}^{x} yg(y)dy \Rightarrow
 	\end{align*}
-	\begin{equation*}
+	\begin{align*}
 		\beta(x) = \frac{1}{G(x)} \int_{0}^{x} yg(y)dy
-	\end{equation*}
+	\end{align*}
 \end{proof}
 
 \section{Lance no leilão de primeiro preço com opção de aquisição}
-\begin{proof}[Prova do Lema \ref{lema:nash-primeiro-preco-opcao}]
+\begin{proof}[Prova da Proposição \ref{prop:nash-primeiro-preco-opcao}]
 	Como todos os jogadores implementam a melhor resposta em um equilíbrio de Nash, vamos maximizar para $b$.
 	\begin{align*}
-		& \frac{d H(\beta^{-1}(b)) G(\beta^{-1}(b)) (x - b)}{db} = 0 \Rightarrow \\
-		\frac { h(\bbeta}{\dinvbeta} \left[ G(\bbeta)(x - b) \right] & + H(\bbeta) \left[ \frac{g(\bbeta)}{\dinvbeta}(x - b) - G(\bbeta) \right] = 0 \Rightarrow \\
+		& \frac{d H(\beta^{-1}(b)) G(\beta^{-1}(b)) (x - b)}{db} = 0 \Rightarrow
+	\end{align*}
+	\begin{align*}
+		\frac { h(\bbeta}{\dinvbeta} \left[ G(\bbeta)(x - b) \right] & + H(\bbeta) \left[ \frac{g(\bbeta)}{\dinvbeta}(x - b) - G(\bbeta) \right] = 0 \Rightarrow
+	\end{align*}
+	\begin{align*}
 		h(\bbeta) \left[ G(\bbeta)(x - b) \right] & + H(\bbeta) \left[ g(\bbeta)(x - b) \right] = H(\bbeta)G(\bbeta)\dinvbeta
 	\end{align*}
 	Aplicando a hipótese de simetria, $b = \beta(x)$, segue que:
-	\begin{gather*}
-		h(x)G(x)(x-\beta(x)) + H(x)g(x)(x-\beta(x)) = H(x)G(x)\beta'(x) \Rightarrow \\
-		\left[ h(x)G(x) + H(x)g(x) \right]x = \left[ h(x)G(x) + H(x)g(x) \right]\beta(x) + H(x)G(x)\beta'(x) \Rightarrow \\
-	\end{gather*}
 	\begin{align*}
-		\frac {d H(x)G(x) }{dx} x & = \frac{d H(x)G(x)\beta(x)}{dx} \Rightarrow \\
-		\int_0^x \frac {d H(y)G(y) }{dy} ydy & = \int_0^x \frac{d H(y)G(y)\beta(y)}{dy}dy \Rightarrow \\
-    	\int_0^x (H(y)G(y))'ydy & = H(x)G(x)\beta(x) - \cancelto{0}{H(0)G(0)\beta(0)} \Rightarrow \\
-    	\left[ H(y)G(y)y \right]_0^x - \int_0^x H(y)G(y)dy & = H(x)G(x)\beta(x) \Rightarrow \\
-    	H(x)G(x)x - \int_0^x H(y)G(y)dy & = H(x)G(x)\beta(x) \Rightarrow \\
+		h(x)G(x)(x-\beta(x)) + H(x)g(x)(x-\beta(x)) = H(x)G(x)\beta'(x) \Rightarrow
 	\end{align*}
-	\begin{equation*}
+	\begin{align*}
+		\left[ h(x)G(x) + H(x)g(x) \right]x = \left[ h(x)G(x) + H(x)g(x) \right]\beta(x) + H(x)G(x)\beta'(x) \Rightarrow
+	\end{align*}
+	\begin{align*}
+		\frac {d H(x)G(x) }{dx} x & = \frac{d H(x)G(x)\beta(x)}{dx} \Rightarrow
+	\end{align*}
+	\begin{align*}
+		\int_0^x \frac {d H(y)G(y) }{dy} ydy & = \int_0^x \frac{d H(y)G(y)\beta(y)}{dy}dy \Rightarrow
+	\end{align*}
+	\begin{align*}
+    	\int_0^x (H(y)G(y))'ydy & = H(x)G(x)\beta(x) - \cancelto{0}{H(0)G(0)\beta(0)} \Rightarrow
+    \end{align*}
+	\begin{align*}
+    	\left[ H(y)G(y)y \right]_0^x - \int_0^x H(y)G(y)dy & = H(x)G(x)\beta(x) \Rightarrow
+    \end{align*}
+	\begin{align*}
+    	H(x)G(x)x - \int_0^x H(y)G(y)dy & = H(x)G(x)\beta(x) \Rightarrow
+	\end{align*}
+	\begin{align*}
     	\beta(x) = x - \int_0^x \frac{H(y)G(y)}{H(x)G(x)}dy
-	\end{equation*}
+	\end{align*}
 \end{proof}
 
 \section{Lance no leilão de segundo preço com opção de aquisição}
-\begin{proof}[Prova do Lema \ref{lema:nash-segundo-preco-opcao}]
+
+\subsection{Primeira parte: encontrando a equação integral}
+\begin{lema}
+	A estratégia de equilíbrio simétrico num leilão de segundo preço como a opção de não se adquirir o bem é dada por:
+	\begin{equation}
+		\beta(x) = x + h(x)\int_0^x \frac{\beta'(y)G(y)dy}{G(x)h(x) + H(x)g(x)}
+	\end{equation}
+\end{lema}
+\begin{proof}
 	A diferença entre os leilões de primeiro e de segundo preço é de natureza de \emph{payoff}, além disso, valem as condições para o Teorema da Equivalência de Receita.
 	Seja $m(x)$ o pagamento no leilão de primeiro preço:
-	\begin{equation*}
+	\begin{align*}
 		m(x) = \int_0^x y(G(y)h(y)+H(y)g(y)) dy
-	\end{equation*}
+	\end{align*}
 	Por outro lado, considerando $Y$ a estatística de maior ordem dos outros $n-1$ participantes, o pagamento no leilão de segundo preço será:
-	\begin{equation*}
+	\begin{align*}
 		m(x) = H(x)G(x)E[\beta(Y) \mid Y<x] = H(x) \int_0^x \beta(y)g(y)dy
-	\end{equation*}
+	\end{align*}
 	Igualando os pagamentos e derivando em relação a $x$:
 	\begin{align*}
-		\frac{d}{dx} \left[ H(x) \int_0^x \beta(y)g(y)dy \right] = \frac{d}{dx} \int_0^x y(G(y)h(y)+H(y)g(y)) dy & \Rightarrow \\
-		h(x) \int_0^x \beta(y)g(y)dy + H(x)\beta(x)g(x) = x\left[ G(x)h(x) + H(x)g(x) \right] & \Rightarrow \\
+		\frac{d}{dx} \left[ H(x) \int_0^x \beta(y)g(y)dy \right] = \frac{d}{dx} \int_0^x y(G(y)h(y)+H(y)g(y)) dy & \Rightarrow
 	\end{align*}
-
 	\begin{align*}
-		h(x) \left[ \left[ \beta(x)G(x) \right]_0^x - \int_0^x \beta'(y)G(y)dy \right] + H(x)\beta(x)g(x) & = x\left[ G(x)h(x) + H(x)g(x) \right] & \Rightarrow \\
+		h(x) \int_0^x \beta(y)g(y)dy + H(x)\beta(x)g(x) = x\left[ G(x)h(x) + H(x)g(x) \right] & \Rightarrow
+	\end{align*}
+	\begin{align*}
+		h(x) \left[ \left[ \beta(x)G(x) \right]_0^x - \int_0^x \beta'(y)G(y)dy \right] + H(x)\beta(x)g(x) & = x\left[ G(x)h(x) + H(x)g(x) \right] & \Rightarrow
+	\end{align*}
+	\begin{align*}
 		\left[ G(x)h(x) + H(x)g(x) \right]\beta(x) - h(x) \int_0^x \beta'(y)G(y)dy & = x\left[ G(x)h(x) + H(x)g(x) \right] & \Rightarrow
 	\end{align*}
-	\begin{equation*}
+	\begin{align*}
 		\beta(x) = x + h(x) \int_0^x \frac{\beta'(y)G(y)}{G(x)h(x) + H(x)g(x)}dy
+	\end{align*}
+\end{proof}
+
+\subsection{Segunda parte: resolvendo a equação integral}
+\begin{proof}[Prova da Proposição \ref{prop:nash-segundo-preco-opcao}]
+	\begin{align*}
+		\beta(x) = x + \frac{h(x)}{G(x)h(x) + H(x)g(x)} \int_0^x \beta'(y)G(y)dy \Rightarrow
+	\end{align*}
+	\begin{align*}
+		\left[ \beta(x) - x \right] \frac{G(x)h(x) + H(x)g(x)}{h(x)} = \int_0^x \beta'(y)G(y)dy \Rightarrow
+	\end{align*}
+	\begin{align*}
+		\left[ \beta(x) - x \right] \frac{G(x)h(x) + H(x)g(x)}{h(x)} = \left[ \beta(y)G(y) \right]_0^x - \int_0^x \beta(y)g(y)dy \Rightarrow
+	\end{align*}
+	\begin{align*}
+		-x \frac{G(x)h(x) + H(x)g(x)}{h(x)} = \beta(x) \left[ G(x) - \frac{G(x)h(x) + H(x)g(x)}{h(x)} \right] - \int_0^x \beta(y)g(y)dy \Rightarrow
+	\end{align*}
+	\begin{align*}
+		-x \frac{G(x)h(x) + H(x)g(x)}{h(x)} = \beta(x) \left[ \frac{\cancel{G(x)h(x)} - \cancel{G(x)h(x)} - H(x)g(x)}{h(x)} \right] - \int_0^x \beta(y)g(y)dy \Rightarrow
+	\end{align*}
+	\begin{align*}
+		x \frac{G(x)h(x) + H(x)g(x)}{h(x)} = \beta(x) \left[ \frac{H(x)g(x)}{h(x)} \right] + \int_0^x \beta(y)g(y)dy \Rightarrow
+	\end{align*}
+	\begin{align*}
+		x \frac{G(x)h(x) + H(x)g(x)}{\cancel{h(x)}}\frac{\cancel{h(x)}}{H(x)g(x)} = \beta(x) + \frac{h(x)}{H(x)g(x)}\int_0^x \beta(y)g(y)dy \Rightarrow
+	\end{align*}
+	\begin{align*}
+		x + x \frac{G(x)h(x)}{H(x)g(x)} = \beta(x) + \frac{h(x)}{H(x)g(x)}\int_0^x \beta(y)g(y)dy
+	\end{align*}
+	A equação integral está no mesmo formato da equação 2.9.2 em \citet{polyanin1998handbook}:
+	\begin{equation*}
+		f(x) = y(x) - \int_a^x \widehat{g}(x)\widehat{h}(t)y(t)dt
 	\end{equation*}
+	Onde:
+	\begin{align*}
+		y(x) & = \beta(x) \\
+		f(x) & = x + x \frac{G(x)h(x)}{H(x)g(x)} \\
+		\widehat{g}(x) & = -\frac{h(x)}{H(x)g(x)} \\
+		\widehat{h}(t) & = g(y) \\
+		dt &= dy \\
+		a &= 0
+	\end{align*}
+	A solução será dada por:
+	\begin{equation*}
+		y(x) = f(x) + \int_a^x R(x,t)f(t)dt \text{, onde } R(x,t) = \widehat{g}(x)\widehat{h}(t)exp\left[ \int_t^x g(s)h(s)ds \right]
+	\end{equation*}
+	Trocaremos o $y$ por $t$, para combinar com a notação do livro. Vamos calcular $R(x,t)$:
+	\begin{align*}
+		R(x,t) & = -\frac{h(x)}{H(x)g(x)} g(t) exp\left[ \int_t^x -\frac{h(s)}{H(s)g(s)}g(s)ds \right] \Rightarrow \\
+		& = -\frac{h(x)}{H(x)g(x)} g(t) exp\left[ \int_t^x -\frac{h(s)}{H(s)}ds \right] \Rightarrow \\
+		& = -\frac{h(x)}{H(x)g(x)} g(t) exp\left[ ln \left( \frac{H(t)}{H(x)} \right) \right] \Rightarrow \\
+		& = -\frac{h(x)}{H(x)g(x)} g(t) \frac{H(t)}{H(x)} \Rightarrow \\
+		& = -\frac{h(x)g(t)H(t)}{H(x)^2g(x)}
+	\end{align*}
+	Dado $R(x,t)$, procederemos com o cálculo da integral:
+	\begin{align*}
+		\int_0^x R(x,t)f(t)dt & = \int_0^x -\frac{h(x)g(t)H(t)}{H(x)^2g(x)} \frac{[G(t)h(t)+H(t)g(t)]t}{H(t)g(t)} dt \Rightarrow \\
+		& = \int_0^x -\frac{h(x)\cancel{g(t)}\cancel{H(t)}}{H(x)^2g(x)} \frac{[G(t)h(t)+H(t)g(t)]t}{\cancel{H(t)}\cancel{g(t)}} dt \Rightarrow \\
+		& = -\frac{h(x)}{H(x)^2g(x)} \int_0^x  t \left[ G(t)h(t)+H(t)g(t) \right] dt \Rightarrow \\
+		& = -\frac{h(x)}{H(x)^2g(x)} \left[ tG(t)H(t) \right]_0^x -\int_0^x G(t)H(t)dt \Rightarrow \\
+		& = -x \frac{h(x)G(x)\cancel{H(x)}}{H(x)^{\cancel{2}}g(x)} + \frac{h(x)}{H(x)^2g(x)}\int_0^x G(t)H(t)dt
+	\end{align*}
+	A solução final é dada por:
+	\begin{align*}
+		\beta(x) & = x + \cancel{x \frac{G(x)h(x)}{H(x)g(x)}} - \cancel{x \frac{h(x)G(x)}{H(x)g(x)}} + \frac{h(x)}{H(x)^2g(x)}\int_0^x G(t)H(t)dt \Rightarrow \\
+		& = x + \frac{h(x)}{H(x)^2g(x)}\int_0^x G(t)H(t)dt
+	\end{align*}
 \end{proof}

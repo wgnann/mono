@@ -32,13 +32,13 @@ Seja $H()$ a função de probabilidade acumulada do leiloeiro, o \emph{payoff} e
 	P[vender]P[vencer](x_i - b) \Rightarrow H(\beta^{-1}(b))G(\beta^{-1}(b))(x_i - b)
 \end{align*}
 
-\begin{lema}
-	\label{lema:nash-primeiro-preco-opcao}
+\begin{proposicao}
+	\label{prop:nash-primeiro-preco-opcao}
 	A estratégia de equilíbrio simétrico num leilão de primeiro preço com a opção de não se adquirir o bem é dada por:
 	\begin{equation}
 		\beta(x) = x - \int_0^x \frac{G(y)H(y)}{G(x)H(x)}dy
 	\end{equation}
-\end{lema}
+\end{proposicao}
 
 O pagamento esperado realizado pelo vencedor será:
 \begin{equation}
@@ -47,25 +47,25 @@ O pagamento esperado realizado pelo vencedor será:
 
 \section{Leilão de segundo preço com opção de aquisição}
 
-\begin{lema}
-	\label{lema:nash-segundo-preco-opcao}
+\begin{proposicao}
+	\label{prop:nash-segundo-preco-opcao}
 	A estratégia de equilíbrio simétrico num leilão de segundo preço como a opção de não se adquirir o bem é dada por:
 	\begin{equation}
-		\beta(x) = x + h(x)\int_0^x \frac{\beta'(y)G(y)dy}{G(x)h(x) + H(x)g(x)}
+		\beta(x) = x + \frac{h(x)}{H(x)^2 g(x)} \int_0^x G(y)H(y)dy
 	\end{equation}
-\end{lema}
+\end{proposicao}
 
 \section{Pregão de segundo preço por registro de preços}
 
-\begin{lema}
-	\label{lema:nash-pregao-segundo-preco-rp}
+\begin{proposicao}
+	\label{prop:nash-pregao-segundo-preco-rp}
 	A estratégia de equilíbrio simétrico num pregão de segundo preço por registro de preços é dada por:
 	\begin{equation}
-		\beta(x) = x - h(x)\int_x^1 \frac{\beta'(y)[1-G(y)]dy}{[1-G(x)]h(x) + [1-H(x)]g(x)}
+		\beta(x) = x - \frac{h(x)}{[1-H(x)]^2 g(x)} \int_x^1 [1-G(y)][1-H(y)]dy
 	\end{equation}
-\end{lema}
+\end{proposicao}
 \begin{proof}
-	Trata-se do caso dual do resultado do lema \ref{lema:nash-segundo-preco-opcao}.
+	Trata-se do caso dual do resultado da proposição \ref{prop:nash-segundo-preco-opcao}.
 \end{proof}
 
 \section{Pregão de segundo preço por registro de preços com qualidade}
