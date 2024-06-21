@@ -187,3 +187,54 @@
 		& = x + \frac{h(x)}{H(x)^2g(x)}\int_0^x G(t)H(t)dt
 	\end{align*}
 \end{proof}
+
+\section{Lance no pregão de segundo preço por registro de preços com qualidade}
+
+\subsection{Primeira parte: encontrando a equação integral}
+\begin{lema}
+	\label{lema:nash-pregao-segundo-preco-qualidade}
+	A estratégia de equilíbrio simétrico num pregão de segundo preço por registro de preços com recusa por qualidade é dada por:
+	\begin{equation}
+		\beta(\theta) = c(q, \theta) + \frac{h(q)q'(\theta)}{H(q)g(\theta)-h(q)q'(\theta)[1-G(\theta)]} \int_{\theta}^1 \beta'(y)[1-G(y)]dy
+	\end{equation}
+\end{lema}
+\begin{proof}
+	O objetivo, como usual, é maximizar o \emph{payoff}, que é dado por:
+	\begin{align*}
+		P[aceitar]P[vencer](E[\beta(Y) \mid Y > b]-c(q,\theta)) = 
+	\end{align*}
+	\begin{align*}
+		H(q)[1-G(\bbeta)] \left[ \int_{\bbeta}^1 \frac{\beta(y)g(y)}{1-G(\bbeta)}dy - c(\theta) \right] \Rightarrow
+	\end{align*}
+	\begin{align*}
+		H(q) \left[ \int_{\bbeta}^1 \beta(y)g(y)dy - [1-G(\bbeta)]c(\theta) \right]
+	\end{align*}
+	Maximizando para $b$:
+	\begin{align*}
+		H(q) \left[ -\frac{\beta(\bbeta)g(\bbeta)}{\cancel{\dinvbeta}} + \frac{g(\bbeta)}{\cancel{\dinvbeta}}c(\theta) \right] +
+	\end{align*}
+	\begin{align*}
+		\frac{h(q)q'(\bbeta)}{\cancel{\dinvbeta}} \left[ \int_{\bbeta}^1 \beta(y)g(y)dy - [1-G(\bbeta)]c(\theta) \right] = 0
+	\end{align*}
+	Aplicando a hipótese de equilíbrio $\beta(\theta) = b$:
+	\begin{align*}
+		H(q) \left[ -\beta(\theta)g(\theta) + g(\theta)c(\theta) \right] + h(q)q'(\theta) \left[ \int_{\theta}^1 \beta(y)g(y)dy - [1-G(\theta)]c(\theta) \right] = 0 \Rightarrow
+	\end{align*}
+	\begin{align*}
+		H(q)g(\theta)c(\theta)-h(q)q'(\theta)[1-G(\theta)]c(\theta) + h(q)q'(\theta) \int_{\theta}^1 \beta(y)g(y)dy = H(q)g(\theta)\beta(\theta) \Rightarrow
+	\end{align*}
+	\begin{align*}
+		c(\theta)[H(q)g(\theta)-h(q)q'(\theta)[1-G(\theta)]] +
+	\end{align*}
+	\begin{align*} h(q)q'(\theta) \left[ [-\beta(y)[1-G(y)]]_{\theta}^1 + \int_{\theta}^1 \beta'(y)[1-G(y)]dy \right] = H(q)g(\theta)\beta(\theta) \Rightarrow
+	\end{align*}
+	\begin{align*}
+		c(\theta)[H(q)g(\theta)-h(q)q'(\theta)[1-G(\theta)]] + h(q)q'(\theta) \int_{\theta}^1 \beta'(y)[1-G(y)]dy =
+	\end{align*}
+ 	\begin{align*}
+		\beta(\theta)[H(q)g(\theta) - h(q)q'(\theta)[1-G(\theta)]] \Rightarrow
+	\end{align*}
+	\begin{align*}
+		\beta(\theta) = c(q,\theta) + \frac{h(q)q'(\theta)}{H(q)g(\theta) - h(q)q'(\theta)[1-G(\theta)]} \int_{\theta}^1 \beta'(y)[1-G(y)]dy
+	\end{align*}
+\end{proof}
