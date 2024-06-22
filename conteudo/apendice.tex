@@ -178,7 +178,7 @@
 		\int_0^x R(x,t)f(t)dt & = \int_0^x -\frac{h(x)g(t)H(t)}{H(x)^2g(x)} \frac{[G(t)h(t)+H(t)g(t)]t}{H(t)g(t)} dt \Rightarrow \\
 		& = \int_0^x -\frac{h(x)\cancel{g(t)}\cancel{H(t)}}{H(x)^2g(x)} \frac{[G(t)h(t)+H(t)g(t)]t}{\cancel{H(t)}\cancel{g(t)}} dt \Rightarrow \\
 		& = -\frac{h(x)}{H(x)^2g(x)} \int_0^x  t \left[ G(t)h(t)+H(t)g(t) \right] dt \Rightarrow \\
-		& = -\frac{h(x)}{H(x)^2g(x)} \left[ tG(t)H(t) \right]_0^x -\int_0^x G(t)H(t)dt \Rightarrow \\
+		& = -\frac{h(x)}{H(x)^2g(x)} \left[ \left[ tG(t)H(t) \right]_0^x -\int_0^x G(t)H(t)dt \right] \Rightarrow \\
 		& = -x \frac{h(x)G(x)\cancel{H(x)}}{H(x)^{\cancel{2}}g(x)} + \frac{h(x)}{H(x)^2g(x)}\int_0^x G(t)H(t)dt
 	\end{align*}
 	A solução final é dada por:
@@ -236,5 +236,57 @@
 	\end{align*}
 	\begin{align*}
 		\beta(\theta) = c(q,\theta) + \frac{h(q)q'(\theta)}{H(q)g(\theta) - h(q)q'(\theta)[1-G(\theta)]} \int_{\theta}^1 \beta'(y)[1-G(y)]dy
+	\end{align*}
+\end{proof}
+
+\subsection{Segunda parte: resolvendo a equação integral}
+\begin{proof}[Prova da Proposição \ref{prop:nash-pregao-segundo-preco-qualidade}]
+	Continuaremos do lema \ref{lema:nash-pregao-segundo-preco-qualidade}.
+	\begin{align*}
+		H(q)g(\theta)c(\theta)-h(q)q'(\theta)[1-G(\theta)]c(\theta) + h(q)q'(\theta) \int_{\theta}^1 \beta(y)g(y)dy = H(q)g(\theta)\beta(\theta) \Rightarrow
+	\end{align*}
+	\begin{align*}
+		c(\theta)-\frac{h(q)q'(\theta)[1-G(\theta)]}{H(q)g(\theta)}c(\theta) = \beta{\theta} - \frac{h(q)q'(\theta)}{H(q)g(\theta)} \int_{\theta}^1 \beta(y)g(y)dy 
+	\end{align*}
+	Inverteremos a ordem da integral para deixá-la no mesmo formato da equação 2.9.2 em \citet{polyanin1998handbook}:
+	\begin{align*}
+		c(\theta)-\frac{h(q)q'(\theta)[1-G(\theta)]}{H(q)g(\theta)}c(\theta) = \beta{\theta} + \frac{h(q)q'(\theta)}{H(q)g(\theta)} \int_1^{\theta} \beta(y)g(y)dy 
+	\end{align*}
+	Com:
+	\begin{align*}
+		y(x) & = \beta(\theta) \\
+		f(x) & = c(\theta)-\frac{h(q)q'(\theta)[1-G(\theta)]}{H(q)g(\theta)}c(\theta) \\
+		g(x) & = - \frac{h(q)q'(\theta)}{H(q)g(\theta)} \\
+		h(t) & = g(y) \\
+		dt & = dy \\
+		x & = \theta \\
+		a & = 1
+	\end{align*}
+	Da prova da proposição \ref{prop:nash-pregao-segundo-preco-rp}, segue que:
+	\begin{equation*}
+		R(x,t) = -\frac{h(x)g(t)H(t)}{H(x)^2g(x)}
+	\end{equation*}
+	Por simplicidade, usaremos $h(x)$ e $h(t)$ em vez de $h(\theta)q'(\theta)$. Procederemos com o cálculo da integral.
+	\begin{align*}
+		\int_1^x R(x,t)f(t)dt & = -\frac{h(x)}{H(x)^2g(x)} \int_1^x c(t)\cancel{H(t)g(t)} \frac{H(t)g(t)-h(t)[1-G(t)]}{\cancel{H(t)g(t)}} dt \Rightarrow \\
+		& = -\frac{h(x)}{H(x)^2g(x)} \int_1^x  c(t) \left[ H(t)g(t)-h(t)[1-G(t)] \right] dt
+	\end{align*}
+	Vale ressaltar que:
+	\begin{equation*}
+		\frac{d(-H(x)(1-G(x)))}{dx} =  H(x)g(x)-h(x)[1-G(x)]
+	\end{equation*}
+	Portanto, invertendo a ordem da integral segue que:
+	\begin{align*}
+		\int_1^x R(x,t)f(t)dt & = \frac{h(x)}{H(x)^2g(x)} \left[ \left[ -c(t)H(t)[1-G(t)] \right]_x^1  + \int_x^1  c'(t)H(t)[1-G(t)] dt \right] \Rightarrow \\
+		& = \frac{h(x)}{H(x)^2g(x)} \left[ -c(1)H(1)\cancelto{0}{[1-G(1)]} + c(x)H(x)[1-G(x)] + \int_x^1  c'(t)H(t)[1-G(t)] dt \right] \Rightarrow \\
+		& = \frac{c(x)h(x)[1-G(x)]}{H(x)g(x)} + \frac{h(x)}{H(x)^2g(x)} \int_x^1  c'(t)H(t)[1-G(t)] dt
+	\end{align*}
+	Somando $f(x)$:
+	\begin{align*}
+		\beta(x) = c(x) - \cancel{\frac{c(x)h(x)[1-G(x)]}{H(x)g(x)}} + \cancel{\frac{c(x)h(x)[1-G(x)]}{H(x)g(x)}} + \frac{h(x)}{H(x)^2g(x)} \int_x^1  c'(t)H(t)[1-G(t)] dt
+	\end{align*}
+	Trocando de volta $x$ por $\theta$ e $h(x)$ por $h(q)q'(\theta)$.
+	\begin{align*}
+		\beta(q, \theta) = c(q, \theta) + \frac{h(\theta)q'(\theta)}{H(\theta)^2g(\theta)} \int_{\theta}^1 c_y(q, y)[1-G(y)]H(q(y))dy
 	\end{align*}
 \end{proof}
