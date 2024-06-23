@@ -23,7 +23,7 @@ No segundo caso pode haver um certo raciocínio de custo-benefício a partir do 
 
 Analisaremos o caso dual com o objetivo de compreender o comportamento de equilíbrio.
 
-\section{Leilão de primeiro preço com opção de aquisição}
+\subsection{Leilão de primeiro preço com opção de venda}
 
 Um leilão de primeiro preço com opção de aquisição é um leilão como visto no capítulo \ref{cap:revisao} com o adicional de que o vendedor pode decidir \textbf{não} vender o bem considerando o lance ganhador. Uma forma de interpretar é imaginar que há um preço de reserva oculto \citet{Bugarin2022}. Outra interpretação é que o único jeito, no mundo restrito do modelo, de o participante sinalizar para o leiloeiro seu interesse no bem é pelo lance, embora esse lance possa conter informação de outras naturezas como o \emph{score} de crédito do participante ou alguma medida de credibilidade.
 
@@ -45,7 +45,7 @@ O pagamento esperado realizado pelo vencedor será:
 	H(x)G(x) \left[ x - \int_0^x \frac{G(y)H(y)}{G(x)H(x)}dx \right] = \int_0^x y(G(y)h(y)+H(y)g(y)) dy
 \end{equation}
 
-\section{Leilão de segundo preço com opção de aquisição}
+\subsection{Leilão de segundo preço com opção de venda}
 
 \begin{proposicao}
 	\label{prop:nash-segundo-preco-opcao}
@@ -55,7 +55,7 @@ O pagamento esperado realizado pelo vencedor será:
 	\end{equation}
 \end{proposicao}
 
-\section{Pregão de segundo preço por registro de preços}
+\subsection{Pregão de segundo preço por registro de preços}
 
 \begin{proposicao}
 	\label{prop:nash-pregao-segundo-preco-rp}
@@ -68,7 +68,7 @@ O pagamento esperado realizado pelo vencedor será:
 	Trata-se do caso dual do resultado da proposição \ref{prop:nash-segundo-preco-opcao}.
 \end{proof}
 
-\section{Pregão de segundo preço por registro de preços com qualidade}
+\subsection{Pregão de segundo preço por registro de preços com qualidade}
 
 \begin{lema}
 	Com leilões (reversos) de primeiro e de segundo preço, a qualidade é escolhida em $q_s(\theta)$ para $\theta \in [0, 1]$ onde:
@@ -84,6 +84,6 @@ O pagamento esperado realizado pelo vencedor será:
 	\label{prop:nash-pregao-segundo-preco-qualidade}
 	A estratégia de equilíbrio simétrico num pregão de segundo preço por registro de preços com qualidade é dada por:
 	\begin{equation}
-		\beta(q, \theta) = c(q, \theta) + \frac{h(q)q'(\theta)}{H(q)^2g(\theta)}\int_{\theta}^1 c_{y}(q, y)[1-G(y)]H(q(y))dy
+		\beta(q, \theta) = c(q, \theta) + \frac{h(q)q'(\theta)}{H(q)^2g(\theta)}\int_{\theta}^1 c_{y}(q(y), y)[1-G(y)]H(q(y))dy
 	\end{equation}
 \end{proposicao}
