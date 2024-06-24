@@ -46,6 +46,31 @@
 	\end{align*}
 \end{proof}
 
+\section{Teorema da Equivalência de Receitas}
+\begin{proof}[Prova do Teorema \ref{teorema:equivalencia_de_receitas} \citet{krishna}]
+	Seja $i$ um jogador, $x$ sua valoração, $z$ seu lance, $G()$ a distribuição acumulada da estatística de maior ordem dos $n-1$ outros jogadores, $Y$, $m()$ o pagamento e $p(x,z) = G(z)x - m(z)$ o \emph{payoff}. Maximizando o \emph{payoff}:
+	\begin{align*}
+		\frac{dp}{dz} = g(z)x - \frac{dm(z}{dz} = 0 \Rightarrow
+		g(z)x = \frac{dm(z)}{dz}
+	\end{align*}
+	Aplicando a hipótese de equilíbrio, $z = x$:
+	\begin{align*}
+		g(x)x = \frac{dm(x)}{dx} \Rightarrow
+	\end{align*}
+	\begin{align*}
+		\int_0^x yg(y) = \int_0^x \frac{dm(y)}{dy} \Rightarrow
+	\end{align*}
+	\begin{align*}
+		m(x)-m(0) = \int_0^x yg(y) \Rightarrow
+	\end{align*}
+	\begin{align*}
+		m(x) = \cancel{m(0)}+G(x)E[Y \mid Y < x]
+	\end{align*}
+	\begin{align*}
+		m(x) = E[Y \mid Y < x]
+	\end{align*}
+\end{proof}
+
 \section{Lance no leilão de primeiro preço com opção de aquisição}
 \begin{proof}[Prova da Proposição \ref{prop:nash-primeiro-preco-opcao}]
 	Como todos os jogadores implementam a melhor resposta em um equilíbrio de Nash, vamos maximizar para $b$.

@@ -5,9 +5,9 @@
 
 \emph{Dou-lhe uma! Dou-lhe duas! Dou-lhe três!} O leilão certamente figura entre as instituições mais antigas e mais conhecidas da história da humanidade. Situa-se, na Idade Antiga, desde 500a.C., na Babilônia, onde as famílias leiloavam as filhas para casamento, passando pelo leilão do Império Romano em 193 a.C., vencido por Didius Julianus\footnote{Talvez não tenha sido um bom investimento, pois Didius Julianus morreu dois meses depois, decapitado pelas legiões lideradas por Septimius Severus. Segundo \citet{krishna}, trata-se de um caso extremo da maldição do vencedor.} ao dar a maior doação \citet{Cassady2021-ac}.
 
-Também é bastante presente na cultura popular\footnote{\url{https://tvtropes.org/pmwiki/pmwiki.php/Main/Auction}.} fazendo parte de séries de TV como \emph{Star Trek}, jogos de videogame como \emph{Diablo} e \emph{Final Fantasy}, animações como \emph{WiFI Ralph} e \emph{Futurama} e músicas como \emph{Leilão}\footnote{Glória Groove. Clipe em: \url{https://www.youtube.co/watch?v=X7cz9v6mHzg}.}. Não é um exagero dizer que o senso comum entende o conceito de leilão e que esse conceito tem mais de 2000 anos.
+Também é bastante presente na cultura popular\footnote{\url{https://tvtropes.org/pmwiki/pmwiki.php/Main/Auction}.} fazendo parte de séries de TV como \emph{Star Trek}, jogos de videogame como \emph{Diablo} e \emph{Final Fantasy}, animações como \emph{WiFi Ralph} e \emph{Futurama} e músicas como \emph{Leilão}\footnote{Glória Groove. Clipe em: \url{https://www.youtube.co/watch?v=X7cz9v6mHzg}.}. Não é um exagero dizer que o senso comum entende o conceito de leilão e que esse conceito tem mais de 2000 anos.
 
-Hoje em dia os leilões são usados para diversas finalidades: venda de lotes de itens da Receita Federal, venda de ativos financeiros, venda de propaganda em sites da Internet\footnote{A Google utiliza: \url{https://support.google.com/google-ads/answer/142918}.} e a venda de bens em geral. O leilão é um método universal de venda, pois qual quer coisa possível de ser vendida pode ser vendida num leilão \citet{krishna}.
+Hoje em dia os leilões são usados para diversas finalidades: venda de lotes de itens da Receita Federal, venda de ativos financeiros, venda de propaganda em sites da Internet\footnote{A Google utiliza leilões: \url{https://support.google.com/google-ads/answer/142918}.} e a venda de bens em geral. O leilão é um método universal de venda, pois qual quer coisa possível de ser vendida pode ser vendida num leilão \citet{krishna}.
 
 Duas propriedades importantes dos leilões são o fato extraírem informação dos agentes participantes por meio dos lances e a identidade desses agentes ser irrelevante para o resultado \citet{krishna}.
 
@@ -47,7 +47,16 @@ Dependendo de como é a configuração dos lances, os demais participantes passa
 
 Esse acesso à informação pode mudar o comportamento dos agentes, pois pode revelar alguma informação sobre o bem à venda que não é conhecida para todos os participantes. O impacto depende da relação entre os agentes e o bem. É razoável que se o bem for para consumo, conhecer a valoração de outros agentes não é tão relevante. Entretanto, se o objetivo for revender, vale a pena conhecer a valoração dos outros participantes para se ter uma ideia do mercado. Essa informação também é importante na ocasião de o próprio agente ter uma mera crença sobre o valor do bem que está em disputa. À medida em que mais lances são conhecidos essa crença pode ser atualizada.
 
-O caso onde a valoração dos demais participantes é irrelevante é chamado de \textbf{valores privados independentes}. Quando há alguma influência, chamamdos de \textbf{valores privados interdependentes}. Quando todos têm uma mesma valoração a situação é chamada de \textbf{valor comum} \citet{krishna}.
+O caso onde a valoração dos demais participantes é irrelevante é chamado de \textbf{valores privados independentes}. Quando todos têm uma mesma valoração a situação é chamada de \textbf{valor comum} \citet{krishna}. Quando há alguma influência, chamados de \textbf{valores privados interdependentes}, em particular, esses valores podem ser \textbf{afiliados}. De forma, imprecisa, o leilão apresenta valores afiliados se a valoração alta de um jogador torna provável que outros jogadores também tenham uma valoração alta \citet{Klemperer2004-qd}.
+
+Quando os valores são afiliados, não vale mais a equivalência entre o leilão inglês e o leilão de segundo preço. Em, particular, as receitas dos quatro leilões podem ser ranqueadas da seguinte forma \citet{krishna}:
+\begin{equation*}
+	E[\text{inglês}] >= E[\text{segundo preço}] >= E[\text{primeiro preço}] = E[\text{holandês}]
+\end{equation*}
+
+Além disso, vale o princípio da ligação\footnote{\emph{Linkage principle.}}, que diz que, se o leiloeiro dispuser de alguma informação afiliada à valoração dos agentes, vale a pena revelar tal informação, mesmo se tal informação diminuir o preço. Publicizá-la revela informação sobre a valoração do agente vencedor, diminuindo seu ganho justamente por esconder informação sobre a valoração que possui, isto é, aumenta a receita esperada \citet{Shoham2008}.
+
+O princípio da ligação possui uma aplicação prática quando do desenho de editais pelo setor público, pois em licitações de grande porte, há uma extensa gama de informações. Isso sugere que o próprio poder público, por questão de centralização, possa dispensar recursos para conseguir e liberar tais informações \citet{pellegrini2018:MSc}.
 
 \section{O modelo de um leilão}
 
@@ -64,11 +73,13 @@ Primeiramente, vamos estudar como os jogadores determinam a função de lance, $
 
 Em um leilão inglês, de uma forma parecida, só faz sentido o jogador $i$ permanecer dando lances enquanto o preço, $p$, for menor que $x_i$, pois isso maximiza sua utilidade independente do que fizerem os outros jogadores \citet{karlin2017game}. A estratégia da proposição \ref{prop:estrategia-dominante} também majora a utilidade do jogador $i$ independente dos outros jogadores. Em ambos os casos, a estratégia é uma estratégia dominante. É importante ressaltar que essa escolha acontece \emph{independentemente do perfil de risco} dos jogadores \citet{Shoham2008}.
 
+Contudo, se a valoração contiver um componente de valor comum, a estratégia de equilíbrio deixa de ser dar o lance igual à própria valoração ($\beta(x_i) = x_i)$. A ideia é que o valor é comum a todos os jogadores e, portanto, a valoração dos outros jogadores será levada em consideração. Como o lance vencedor na situação hipotética de $\beta(x_i) = x_i$ será a avaliação mais otimista possível sobre o valor efetivo do bem adquirido, o jogador vencedor diminuirá sua própria expectativa sobre o valor, levando-o à conclusão de que pagou demais \citet{Shoham2008}. Esse fenômeno é chamado de maldição do vencedor.
+
 \subsection{O lance no leilão de primeiro preço}
 
 Como os leilões holandês e de primeiro preço são estrategicamente equivalentes, basta tratarmos o leilão de primeiro preço. Mas, ao contrário do leilão de segundo preço, não há uma estratégia dominante. Teremos de adicionar algumas propriedades ao modelo.
 
-O jogador $i$ ainda conhece sua valoração $x_i$, mas, agora, também sabe que a valoração de todos os jogadores segue uma distribuição de probabilidade acumulada $F$, com derivada contínua e que assume valores não nulos em algum intervalo $[0, 1]$. Essa configuração confere o caráter bayesiano ao jogo, pois plugamos o conjunto de tipos e a distribuição de probabilidade à priori ao modelo. Além disso, vamos assumir que os jogadores são \textbf{neutros ao risco}.
+O jogador $i$ ainda conhece sua valoração $x_i$, mas, agora, também sabe que a valoração de cada um dos jogadores segue uma distribuição de probabilidade acumulada $F$ estritamente crescente, com derivada contínua e que assume valores não nulos em algum intervalo $[0, 1]$. Essa configuração confere o caráter bayesiano ao jogo, pois plugamos o conjunto de tipos e a distribuição de probabilidade à priori ao modelo. Em particular, o sinal é a própria valoração do agente. Além disso, vamos assumir que os jogadores são \textbf{neutros ao risco}.
 
 Recapitulando, valem as propriedades \citet{krishna}:
 \begin{itemize}
@@ -129,13 +140,34 @@ O pagamento no leilão de segundo preço é dado pelo segundo maior lance. Como 
 	\label{tab:tabela1}
 \end{table}
 
+\subsection{Teorema da Equivalência de Receitas}
+
+Pode parecer curioso que o pagamento em ambos os casos seja o mesmo e, mais, que a receita esperada auferida pelo leiloeiro seja rigorosamente a mesma, mas esse resultado é um dos teoremas mais importantes para a Teoria dos Leilões.
+
+\begin{teorema}[Teorema da Equivalência de Receitas]
+	\label{teorema:equivalencia_de_receitas}
+	Considere um leilão com as restrições que utilizamos para o leilão de primeiro preço, a saber:
+	\begin{itemize}
+		\item $n$ jogadores cuja valoração segue uma mesma distribuição acumulada $F()$;
+		\item os valores privados são independentes;
+		\item $F()$ é estritamente crescente e com suporte em $[0,1]$;
+		\item os jogadores são neutros a risco.
+	\end{itemize}
+	Se valem adicionalmente:
+	\begin{enumerate}
+		\item $\beta(0) = 0$;
+		\item o bem é alocado para o jogador de maior valor.
+	\end{enumerate}
+	A receita do leilão será a mesma de um leilão de primeiro (ou segundo) preço.
+\end{teorema}
+
 \section{Leilões multi-objeto}
 
 A principal simplificação do leilão unitário em relação ao leilão multi-objeto reside justamente no fato de não haver bens complementares nem bens substitutos nos lotes, uma vez que o objeto é unitário. Uma possibilidade de dar tratamento aos leilões multiunitários é justamente o leilão combinatório \citet{Shoham2008}. Contudo, há problemas práticos em se utilizar leilões combinatórios, pois sua solução exata é intratável de um ponto de vista computacional \citet{Nisan2007}. Aspectos jurídicos do emprego de licitações combinatórias, bem como um exemplo de seu uso no Brasil, são abordados em \citet{pellegrini2018:MSc}.
 
 \section{Pregões}
 
-Existem diversas formas de se abordar a otimização de processos licitatórios. Mas, talvez, a primeira pergunta a ser respondida, que aparece indiretamente em diversos artigos, é: qual a relação entre um leilão e um pregão? Tal pergunta foi formalizada em \citet{deCastro2010} com a prova de que a relação entre um pregão e um leilão é de dualidade, isto é, há um isomorfismo entre as estratégias empregadas num leilão (problema primal) e num pregão (problema dual). Esse resultado permite o emprego de resultados já consolidados na Teoria dos Leilões para atacar os problemas concernentes ao processo licitatório semelhantes aos da modalidade pregão.
+Existem diversas formas de se abordar a otimização de processos licitatórios. Mas, talvez, a primeira pergunta a ser respondida, que aparece indiretamente em diversos artigos, é: qual a relação entre um leilão e um pregão? Tal pergunta foi formalizada em \citet{deCastro2010} com a prova de que a relação entre um pregão e um leilão é de dualidade, isto é, há um isomorfismo entre as estratégias empregadas num leilão (problema primal) e num pregão (problema dual). Esse resultado permite o emprego de resultados já consolidados na Teoria dos Leilões para atacar os problemas concernentes ao processo licitatório semelhantes aos da modalidade pregão. Pregões são simplesmente leilões onde se troca a palavra vendedor por comprador e se coloca o sinal de menos em todos os números que indicam preços ou lances \citet{Shoham2008}.
 
 Não parece haver uma extensa literatura sobre o sistema de registro de preços. Um exemplo é \citet{barbosa2013}. Barbosa analisa o sistema de registro de preços do ponto de vista dos licitantes e mostra que dependendo do custo, o carona pode inviabilizar o processo de compra como um todo. Também discute que o registro de preços é um mecanismo linear, diferentemente dos mecanismos usuais: uniforme, discriminatório e de \emph{Vickrey}. Algumas questões que não são contempladas versam justamente sobre quando o registro de preços é mais adequado que o pregão comum bem como problemas de leilões como a \emph{maldição do vencedor}: o custo efetivo do fornecimento dos bens no registro de preço acaba sendo maior que o preço negociado.
 
