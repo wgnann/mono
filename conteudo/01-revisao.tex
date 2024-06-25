@@ -117,26 +117,85 @@ Basta encontrar o $b$ que maximiza o \emph{payoff}.
 
 Vale ressaltar que o lance no leilão de primeiro preço é a valoração do jogador subtraída de um valor que é sempre positivo.
 
-{ \huge por um gráfico }
-
 Findos os lances, agora vamos determinar quanto o vencedor pagará em cada situação.
 
-\subsection{O pagamento}
+\subsection{Preço de reserva}
 
-No leilão de primeiro preço é imediato, o pagamento esperado é dado pelo maior lance esperado, que é: $G(x)E\left[ Y \mid Y<x \right]$, onde $G(x)$ é a probabilidade de o jogador ganhar o certame com o lance $x$.
+Até o presente momento, o leiloeiro não dispunha de jogadas. Basicamente os jogadores davam seus lances e o bem leiloado era alocado para o jogador de maior valor privado à revelia do leiloeiro. Isso significa que potencialmente o bem pode ser vendido por $\epsilon$, o menor lance possível. Entretanto, podemos assumir que o leiloeiro também tem uma valoração para o bem à venda de tal sorte que a venda por um valor inferior não é desejável.
 
-O pagamento no leilão de segundo preço é dado pelo segundo maior lance. Como $\beta(x) = x$, o pagamento esperado no leilão de segundo preço será dado pelo segundo maior valor, resultando em: $G(x)E\left[ Y \mid Y<x \right]$.
+Adicionaremos ao jogo a possibilidade de o leiloeiro escolher um valor de reserva, $r$, que limita inferiormente o menor lance possível dado em um leilão.
+
+Num leilão de segundo preço, o preço de reserva não muda a estratégia dos jogadores: ainda é ótimo dar o lance $\beta(x) = x$ \citet{krishna}.
+
+Já no de primeiro preço os jogadores de valoração inferior a $r$, darão um lance de $0$ e os jogadores de valoração $r$ só vencerão na situação de todos os outros jogadores terem valoração inferior a $r$. Nesse caso $\beta(r) = r$. O restante dos jogadores dará lances de forma similar à situação sem preço de reserva \citet{krishna}.
+
+\begin{proposicao}
+	A estratégia de equilíbrio simétrico num leilão de primeiro preço com preço de reserva $r$ é dada por:
+	\begin{equation}
+		\beta(x) = E[max\{r, Y\} \mid Y < x] = r\frac{G(r)}{G(x)} + \frac{1}{G(x)} \int_r^x yg(y)dy
+	\end{equation}
+\end{proposicao}
+\begin{proof}
+	Prova análoga à da proposição \ref{prop:nash-primeiro-preco}.
+\end{proof}
+
+\subsection{A receita}
+
+No leilão de primeiro preço é imediato, o pagamento esperado é dado pelo maior lance esperado, que é: $m(x) = G(x)E\left[ Y \mid Y<x \right]$, onde $G(x)$ é a probabilidade de o jogador ganhar o certame com o lance $x$.
+
+O pagamento no leilão de segundo preço é dado pelo segundo maior lance. Como $\beta(x) = x$, o pagamento esperado no leilão de segundo preço será dado pelo segundo maior valor, resultando em: $m(x) = G(x)E\left[ Y \mid Y<x \right]$.
+
+O pagamento \emph{ex ante} é dado por:
+\begin{equation*}
+	E[m(X)] = \int_0^1 y(1-F(y))g(y)dy
+\end{equation*}
+
+Como os $n$ jogadores são simétricos, a receita do leiloeiro é dada simplesmente pela multiplicação do número de jogadores pelo pagamento \emph{ex ante}:
+\begin{equation*}
+	E[R] = nE[m(X)] = E[Y_2]
+\end{equation*}
+
+Os detalhes aritméticos para atingir as igualdades acima estão em \citet{krishna}.
+
+Analogamente, para o caso de preço de reserva:
+\begin{equation*}
+	E[m(X,r)] = r(1-F(r))G(r) + \int_r^1 y(1-F(y))g(y)dy
+\end{equation*}
+
+Seja $x_0$ a valoração do leiloeiro. É razoável supor que $r \geq x_0$. Além disso, o pagamento esperado na ocasião de todos os $n$ participantes darem lances inferiores a $r$ é justamente $F(r)^n x_0$.
+
+A receita esperada, portanto, é dada por:
+\begin{equation*}
+	E[R] = n E[m(X,r)] + F(r)^n x_0
+\end{equation*}
+
+Com o objetivo de analisar a receita esperada, verifiquemos o comportamento de sua derivada, que é:
+\begin{equation*}
+	nG(r)\left(1-\frac{f(r)}{1-F(r)}(r-x_0)\right)
+\end{equation*}
+
+Primeiramente, se $x_0 = r$, a derivada é positiva e, portanto, não pode ser um ponto crítico. Além disso, se $x_0 > r$ e alguém ganhar pagando o preço de reserva, o leiloeiro sairá perdendo. Portanto, a fim de maximizar a receita, $r$ deve ser maior que $x_0$.
+
+No caso de $x_0 = 0$, a receita esperada terá um ponto crítico justamente em $r = 0$. Contudo, se $\frac{f(r)}{1-F(r)}$ for limitada, o ponto será um ponto de mínimo \citet{krishna}. Portanto, $r > x_0 = 0$. Isso significa que a receita esperada com preço de reserva é maior que a receita esperada sem preço de reserva, isto é, quando $r = x_0 = 0$.
+
+Um leilão é dito \textbf{eficiente} se aloca o bem para o jogador que mais o valoriza. Contudo, o leilão com preço de reserva maximiza a receita excluindo os jogadores com valoração inferior ao preço de reserva, podendo não ser eficiente.
+
+Uma situação que ilustra consiste em um leilão com preço de reserva $r$, leiloeiro com valoração $x_0 = 0$ e com o jogador $i$ de maior valoração tendo $x_i < r$. O preço de reserva excluirá tal jogador do certame.
+
+Um leilão que maximiza a receita do leiloeiro é dito um leilão \textbf{ótimo}. Pelo exposto anteriormente, um leilão ótimo pode não ser eficiente.
+
+O quadro a seguir traz um comparativo entre os dois modelos de leilão sem preço de reserva.
 
 \begin{table}[]
 	\centering
-	\begin{tabular}{@{}llll@{}}
+	\begin{tabular}{@{}llllll@{}}
 		\toprule
-		tipo      & primeiro 					     & segundo      					\\ \midrule
-		lance     & $E\left[ Y \mid Y<x \right]$     & $x$             					\\
-		pagamento & $G(x)E\left[ Y \mid Y<x \right]$ & $G(x)E\left[ Y \mid Y<x \right]$ \\
-		receita   & $E\left[ Y_2 \right]$            & $E\left[ Y_2 \right]$            \\
+		tipo      & primeiro 					     & segundo      					& 1{\textordmasculine } com reserva  & 2{\textordmasculine } com reserva \\ \midrule
+		lance     & $E\left[ Y \mid Y<x \right]$     & $x$             					& $E[max\{r, Y\} \mid Y < x]$     & $x$\\
+		pagamento & $G(x)E\left[ Y \mid Y<x \right]$ & = primeiro                       & $G(x)E[max\{r, Y\} \mid Y < x]$ & = 1{\textordmasculine } com reserva \\
+		receita   & $E\left[ Y_2 \right]$            & $E\left[ Y_2 \right]$            & $> E\left[ Y_2 \right]$         & $> E\left[ Y_2 \right]$ \\
 	\end{tabular}
-	\caption{Comparativo entre os dois modelos de leilão.}
+	\caption{Comparativo entre os modelos de leilão.}
 	\label{tab:tabela1}
 \end{table}
 
@@ -156,35 +215,86 @@ Pode parecer curioso que o pagamento em ambos os casos seja o mesmo e, mais, que
 	Se valem adicionalmente:
 	\begin{enumerate}
 		\item $\beta(0) = 0$;
-		\item o bem é alocado para o jogador de maior valor.
+		\item o bem é alocado para o jogador de maior valoração.
 	\end{enumerate}
 	A receita do leilão será a mesma de um leilão de primeiro (ou segundo) preço e, em particular, será dada exclusivamente como função do maior valor privado dentre os jogadores.
 \end{teorema}
 
-Trata-se de um teorema bastante poderoso capaz de dar tratamento para leilões cuja análise do equilíbrio não é trivial como, por exemplo, leilões onde os jogadores não conhecem o número de jogadores, leilões onde todos pagam, leilões de $n$-ésimo preço e prova de resistência.
+Trata-se de um teorema bastante poderoso capaz de dar tratamento para leilões cuja análise do equilíbrio não é trivial como, por exemplo, leilões onde os jogadores não conhecem o número total de jogadores, leilões onde todos pagam, leilões de $n$-ésimo preço e provas de resistência.
 
-Também permite dar um tratamento interpretativo em termos de teoria dos jogos para fenômenos, num primeiro momento, não se assemelham aos leilões como filas, concursos e até sistemas de litigação \citet{Klemperer2004-qd}.
+Também permite dar um tratamento interpretativo em termos de teoria dos jogos para fenômenos que, num primeiro momento, não se assemelham aos leilões como filas, concursos e até sistemas de litigação \citet{Klemperer2004-qd}.
+
+O exemplo dado por \citet{Klemperer2004-qd} interpreta uma sugestão do então vice presidente dos EUA, Dan Quayle, que sugeriu reformar o sistema de litigação dos EUA da seguinte forma: a parte que perder o processo terá de pagar à parte vencedora um adicional igual ao seu próprio dispêndio com o processo. A intuição era de que aumentar os custos processuais desincentivaria as litigações.
+
+Mas imaginemos que cada parte tenha uma valoração privada de vencer o processo em relação a perder obtidos de forma independente a partir de uma mesma distribuição de probabilidade acumulada com suporte finito. Cada parte decide de forma independente o quanto vai despender no processo de tal sorte que a parte que despender mais, ganha. Vale ressaltar que se for despendido 0, a parte perdedora pagará \emph{duas vezes zero}. Logo vale o Teorema da Equivalência de Receitas e a alocação, isto é, quem processará e quem não processará, não mudará.
+
+O Teorema da Equivalência de receitas, num certo sentido, é dual em relação à área de estudo da Economia. Enquanto a economia quer alocar recursos escassos a partir do sistema de preços, o Teorema da Equivalência de Receitas encontra os preço - os lances - a partir de uma dada alocação.
+
+Há um porém em relação ao Teorema da Equivalência de Receitas: embora seja verdade que os leilões que satisfizerem as condições do teorema terão a mesma receita esperada, não é verdade que todas as estratégias que levam àquela receita são necessariamente estratégias de equilíbrio \citet{Shoham2008}. Isso significa que é necessário provar que a estratégia encontrada é efetivamente uma estratégia de equilíbrio.
 
 \section{Leilões multi-objeto}
 
-A principal simplificação do leilão unitário em relação ao leilão multi-objeto reside justamente no fato de não haver bens complementares nem bens substitutos nos lotes, uma vez que o objeto é unitário. Uma possibilidade de dar tratamento aos leilões multiunitários é justamente o leilão combinatório \citet{Shoham2008}. Contudo, há problemas práticos em se utilizar leilões combinatórios, pois sua solução exata é intratável de um ponto de vista computacional \citet{Nisan2007}. Aspectos jurídicos do emprego de licitações combinatórias, bem como um exemplo de seu uso no Brasil, são abordados em \citet{pellegrini2018:MSc}.
+A principal diferença entre um leilão multi-objeto para um leilão com um único objeto repousa sobre como a valoração é definida. Como agora, em vez de um único objeto à venda, existe um determinado conjunto de objetos, $K$, a valoração, $x_i$, será uma função sobre cada um dos subconjuntos de $K$, isto é, o conjunto das partes de $K$.
+
+Um subconjunto de $K$ é chamado de pacote\footnote{\emph{Package}.}. Em particular, a valoração sobre o conjunto com nenhum objeto será zero, $x_i(\emptyset) = 0$. Sejam $S_1 \subset K$ e $S_2 \subset S_1 \subset K$, então $x_i(S_2) \leq x_i(S_1)$.
+
+O resultado de um leilão é sempre uma alocação. No contexto de um leilão multi-objeto, a alocação entrega uma partição de $K$, isto é, uma coleção de subconjuntos disjuntos de $K$ onde esses subconjuntos estão associados aos jogadores que deram os melhores lances.
+
+O primeiro problema é que pode haver sinergia entre os objetos. Se dois objetos $a$ e $b$ forem complementares:
+\begin{equation*}
+	x_i(\{a\}) + x_i(\{b\}) \leq x_i(\{a,b\})
+\end{equation*}
+
+Por outro lado, se forem substitutos:
+\begin{equation*}
+	x_i(\{a\}) + x_i(\{b\}) \geq x_i(\{a,b\})
+\end{equation*}
+
+Diante dessas sinergias, outro problema é que pode ser interessante para o leiloeiro dividir esses objetos em lotes. Em particular, na situação de existirem apenas dois jogadores, é sempre melhor montar um único lote \citet{krishna}.
+
+Há um problema prático grave de natureza computacional ao se trabalhar com leilões multi-objeto: encontrar uma alocação eficiente é o mesmo que resolver um problema de programação inteira e, nesse caso, com uma instância da ordem de $2^|K|$. Sua solução exata é intratável de um ponto de vista computacional \citet{Nisan2007}.
 
 \section{Pregões}
 
-Existem diversas formas de se abordar a otimização de processos licitatórios. Mas, talvez, a primeira pergunta a ser respondida, que aparece indiretamente em diversos artigos, é: qual a relação entre um leilão e um pregão? Tal pergunta foi formalizada em \citet{deCastro2010} com a prova de que a relação entre um pregão e um leilão é de dualidade, isto é, há um isomorfismo entre as estratégias empregadas num leilão (problema primal) e num pregão (problema dual). Esse resultado permite o emprego de resultados já consolidados na Teoria dos Leilões para atacar os problemas concernentes ao processo licitatório semelhantes aos da modalidade pregão. Pregões são simplesmente leilões onde se troca a palavra vendedor por comprador e se coloca o sinal de menos em todos os números que indicam preços ou lances \citet{Shoham2008}.
+Qual a relação entre um leilão e um pregão? Tal pergunta foi formalizada em \citet{deCastro2010} com a prova de que a relação entre um pregão e um leilão é de dualidade, isto é, há um isomorfismo entre as estratégias empregadas num leilão (problema primal) e num pregão (problema dual). Permite-se, então, o emprego de resultados já consolidados na Teoria dos Leilões para atacar os problemas concernentes ao processo licitatório semelhantes aos da modalidade pregão. Pregões são simplesmente leilões onde se troca a palavra vendedor por comprador e se coloca o sinal de menos em todos os números que indicam preços ou lances \citet{Shoham2008}.
 
-Não parece haver uma extensa literatura sobre o sistema de registro de preços. Um exemplo é \citet{barbosa2013}. Barbosa analisa o sistema de registro de preços do ponto de vista dos licitantes e mostra que dependendo do custo, o carona pode inviabilizar o processo de compra como um todo. Também discute que o registro de preços é um mecanismo linear, diferentemente dos mecanismos usuais: uniforme, discriminatório e de \emph{Vickrey}. Algumas questões que não são contempladas versam justamente sobre quando o registro de preços é mais adequado que o pregão comum bem como problemas de leilões como a \emph{maldição do vencedor}: o custo efetivo do fornecimento dos bens no registro de preço acaba sendo maior que o preço negociado.
+Um pregão de primeiro preço com valores privados independentes, jogadores neutros a risco é um jogo bayesiano onde os jogadores, chamados licitantes, obtém a partir de uma mesma e conhecida distribuição de probabilidade um sinal que representa seu \textbf{custo}. O objetivo dos licitantes é maximizar o \emph{payoff}, que agora é o preço pago, $p$, subtraído de seu custo privado, $c_i$ \citet{Bugarin2022}.
 
-O problema da maldição do vencedor no contexto da nova lei de licitações é abordado por \citet{Signor2022}. A dinâmica de preços de reserva formado pela mediana de aquisições anteriores leva o preço a convergir ao preço mínimo exequível, ampliando o risco de o contrato não se concretizar. 
+Um pregão de primeiro preço preserva as mesmas propriedades de um leilão de primeiro preço, em especial, os resultados sobre os equilíbrios e preço de reserva \citet{Bugarin2022}. Um pregão de segundo preço também preserva as propriedades de um leilão de segundo preço, em particular, a existência da estratégia fracamente dominante.
 
-Uma discussão sobre o efeito da publicação do preço de reserva em relação à estratégia dos licitantes pode ser encontrada em \citet{Bugarin2022}. Em particular, a divulgação, ou não, do preço de reserva só se torna relevante quando se sabe o número de participantes no certame.
+\begin{proposicao}
+	\label{prop:nash-pregao-primeiro-preco}
+	A estratégia de equilíbrio simétrico num pregão de primeiro preço é dada por:
+	\begin{equation}
+		\beta(c) = \frac{1}{1-G(c)} \int_c^1 yg(y)dy = E[Y \mid Y > c] = c + \int_c^1 \frac{1-G(y)}{1-G(c)}dy
+	\end{equation}
+\end{proposicao}
+\begin{proof}
+	Em \citet{Bugarin2022}.
+\end{proof}
 
-{\huge REESCREVER}
+A proposição \ref{prop:nash-pregao-primeiro-preco} é ``idêntica'' à proposição \ref{prop:nash-primeiro-preco}.
 
-O efeito da negociação nos certames também é abordado. Entretanto, o artigo não aborda casos de licitações com mais de um item, bem como a aquisição de bens via registro de preços.
+Entretanto, nem tudo que existe no mundo dual é facilmente recuperado no mundo primal. Há considerações sobre os agentes que parecem fugir de uma interpretação trivial como a questão da qualidade dos bens ofertados em um pregão. Caso a qualidade, $q$, for meramente obtida por meio de um sinal de uma mesma distribuição de probabilidade conhecida por todos os participantes, haverá o fenômeno da seleção adversa \citet{Che1993}. Atentamos que, por lei, só é possível realizar pregões na modalidade menor preço ou maior desconto. 
 
-Há a preocupação com situações onde a qualidade do bem é relevante \citet{villa:2022}.
+A qualidade também pode versar sobre caraterística não-contratável, isto é, que não pode figurar diretamente no edital do certame. Há a possibilidade de se empregar um mecanismo onde há a previsão não só de um preço de reserva, mas de um preço mínimo para a aquisição dos bens, o \emph{LoLA - Lowball Lottery Auction} \citet{villa:2022}.
 
-{\huge FALAR SOBRE o CHE, MANELLI E MCMILLAN}
+Quando o problema da qualidade se torna endógeno, há a possibilidade de se empregar uma função de \emph{score}, $s(q)$, cujo objetivo é determinar a qualidade por meio de um parâmetro de eficiência, este, sim, obtido a partir de uma distribuição de probabilidade conhecida por todos os participantes. Isso dá substância ao lema:
 
-A qualidade pode se tratar tanto da própria entrega do bem licitado quanto sobre alguma caraterística não-contratável, isto é, que não pode figurar diretamente no edital do certame, incentivando ofertantes de bens de baixa qualidade a atuarem de forma agressiva na fase de lances do certame. O primeiro caso pode configurar um problema de risco moral, pois pode ser mais vantajoso para o vencedor meramente não realizar a entrega do bem contratado. No contexto do registro de preços, pode acontecer justamente uma situação de maldição do vencedor, onde o fornecedor não consegue entregar todas as unidades do bem previstas no contrato. O segundo caso, por sua vez, é um caso de seleção adversa, uma vez que os licitantes com bens de maior qualidade não terão incentivos para participar do certame. Os autores propõem um mecanismo onde há a previsão não só de um preço de reserva, mas de um preço mínimo para a aquisição dos bens, o \emph{LoLA - Lowball Lottery Auction}.
+\begin{lema}
+	Com leilões (reversos) de primeiro e de segundo preço, a qualidade é escolhida em $q_s(\theta)$ para $\theta \in [0, 1]$ onde:
+	\begin{equation}
+		q_s(\theta) = \text{argmax } s(q) - c(q, \theta)
+	\end{equation}
+\end{lema}
+\begin{proof}
+	Em \citet{Che1993}.
+\end{proof}
+
+Quando não é possível utilizar alguma estratégia de \emph{score}, há outros mecanismos possíveis.
+
+Uma possibilidade é empregar um mecanismo de ofertas sequenciais onde o comprador, no nosso caso o órgão público, decide se participa ou não. Se participar, dado um conjunto de preços $(k_i)$, é realizada uma oferta para o vendedor $i$ que pode aceitar ou recusar. Nesse caso a oferta é realizada para o próximo vendedor. O jogo acaba quando algum vendedor aceita a oferta ou quando se esgota o número de vendedores. Esse jogo tem um único equilíbrio perfeito de subjogo e o comprador decide se participa justamente se seu \emph{payoff} esperado for estritamente positivo \citet{Manelli1995}.
+
+Saindo da qualidade, a dinâmica de preços de reserva formado pela mediana de aquisições anteriores, possibilidade sugerida pela lei, leva o preço a convergir ao preço mínimo exequível, ampliando o risco de o contrato não se concretizar. Essa dinâmica pode levar ao problema da maldição do vencedor \citet{Signor2022}.
+
+O mecanismo de registro de preços prevê a possibilidade de diferentes órgãos aderirem. Dependendo do custo para viabilizar a ata de registro de preço, o órgão público pode optar por não realizar o certame dessa forma, pois uma quantidade excessiva de caronas pode tornar o \emph{payoff} muito baixo se comparado ao custo de sua realização \citet{barbosa2013}.
