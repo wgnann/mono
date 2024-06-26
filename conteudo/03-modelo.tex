@@ -7,7 +7,7 @@ Tal diferença induz o modelo a adicionar uma ação para o pregoeiro: a possibi
 
 \section{Pregão por registro de preço}
 
-A hipótese simplificadora será a de que o órgão público demandará apenas um único bem, assim como no modelo apresentado por \citet{Bugarin2022}. Contudo, como na Lei n{\textordmasculine} 14.133 só admite menor preço ou maior desconto, o modelo de pregão é o de lances sucessivos e, portanto, melhor modelado por um pregão de segundo menor preço.
+A hipótese simplificadora será a de que o órgão público demandará apenas um único bem, assim como no modelo apresentado por \citet{Bugarin2022}. Contudo, como na Lei n{\textordmasculine} 14.133 só é admitido menor preço ou maior desconto, o modelo de pregão é o de lances sucessivos e, portanto, na hipótese de os valores privados serem independentes, é melhor modelado por um pregão de segundo menor preço.
 
 O modelo de um pregão assume $N$ licitantes simétricos cuja ação prevista é a de dar um lance com o objetivo de maximizar o \emph{payoff}. Em caso de vitória, ganha-se diferença entre o lance e o custo, valor privado independente. Caso contrário, o \emph{payoff} será zero. Além disso, o pregoeiro pode demandar o bem, ou não, seguindo uma distribuição de probabilidade conhecida por todos os jogadores.
 
@@ -19,13 +19,15 @@ Aqui existem duas possibilidades de modelagem sobre a aquisição do bem. Ela po
 
 Uma justificativa para o primeiro caso é o órgão público possuir renda o suficiente para adquirir o bem e a decisão de aquisição ser pautada por alguma razão interna ao órgão. Uma possibilidade seria a aquisição de computadores condicional à vinda de funcionários. Esse evento não possui relação com o lance dos jogadores e determina integralmente a aquisição.
 
+Naturalmente, no primeiro caso, a estratégia de equilíbrio é dada pela estratégia dominante de se jogar $\beta(c) = c$.
+
 No segundo caso pode haver um certo raciocínio de custo-benefício a partir do órgão público. Nesse sentido, quanto menor o preço, maior a probabilidade de o bem ser adquirido.
 
-Analisaremos o caso dual com o objetivo de compreender o comportamento de equilíbrio.
+Com o objetivo de facilitar as contas, analisaremos o caso dual com o objetivo de compreender o comportamento de equilíbrio.
 
 \subsection{Leilão de primeiro preço com opção de venda}
 
-Um leilão de primeiro preço com opção de aquisição é um leilão como visto no capítulo \ref{cap:revisao} com o adicional de que o vendedor pode decidir \textbf{não} vender o bem considerando o lance ganhador. Uma forma de interpretar é imaginar que há um preço de reserva oculto \citet{Bugarin2022}. Outra interpretação é que o único jeito, no mundo restrito do modelo, de o participante sinalizar para o leiloeiro seu interesse no bem é pelo lance, embora esse lance possa conter informação de outras naturezas como o \emph{score} de crédito do participante ou alguma medida de credibilidade.
+Um leilão de primeiro preço com opção de venda acrescenta ao leilão de primeiro preço a possibilidade de o leiloeiro \textbf{não} vender o bem considerando o lance ganhador. Uma forma de interpretar é imaginar que há um preço de reserva oculto \citet{Bugarin2022}. Outra interpretação é que o único jeito, no mundo restrito do modelo, de o participante sinalizar para o leiloeiro seu interesse no bem é pelo lance, embora esse lance possa conter informação de outras naturezas como alguma medida de credibilidade.
 
 Seja $H()$ a função de probabilidade acumulada do leiloeiro, o \emph{payoff} esperado será determinado por:
 \begin{align*}
@@ -40,12 +42,23 @@ Seja $H()$ a função de probabilidade acumulada do leiloeiro, o \emph{payoff} e
 	\end{equation}
 \end{proposicao}
 
+O primeiro fato a se destacar ao observarmos a estratégia é que o jogador leva a função de probabilidade do leiloeiro em questão ao escolher o quanto de sua valoração será escondida no lance. O lance, se comparado à estratégia no leilão de primeiro preço usual, tipicamente será \textbf{mais próximo} da valoração do jogador.
+
+Se a distribuição do leiloeiro, $H()$, for igual à distribuição da valoração dos jogadores, o efeito será exatamente o mesmo de adicionar mais um jogador ao certame. 
+
 O pagamento esperado realizado pelo vencedor será:
 \begin{equation}
 	H(x)G(x) \left[ x - \int_0^x \frac{G(y)H(y)}{G(x)H(x)}dx \right] = \int_0^x y(G(y)h(y)+H(y)g(y)) dy
 \end{equation}
 
 \subsection{Leilão de segundo preço com opção de venda}
+
+Analogamente, um leilão de segundo preço com opção de venda acrescenta ao leilão de segundo preço a possibilidade de o leiloeiro também não vender o bem considerando o lance ganhador. Uma vez que encontramos o pagamento realizado pelo vencedor, poderemos encontrar o equilíbrio do leilão de segundo preço com opção de venda empregando o Teorema da Equivalência de Receitas.
+
+O \emph{payoff} eperado será determinado por:
+\begin{align*}
+	P[vender]P[vencer](\text{2{\textordmasculine } lance esperado}) = H(x)G(x)E[\beta(Y) \mid Y<x]
+\end{align*}
 
 \begin{proposicao}
 	\label{prop:nash-segundo-preco-opcao}
@@ -55,7 +68,15 @@ O pagamento esperado realizado pelo vencedor será:
 	\end{equation}
 \end{proposicao}
 
+O risco de ganhar, mas não levar, leva os jogadores a darem lances acima da própria valoração, deixando os jogadores numa situação potencialmente perigosa.
+
 \subsection{Pregão de segundo preço por registro de preços}
+
+O pregão de segundo preço por registro de preços funciona de maneira bastante similiar ao leilão de segundo preço com opção de venda. Como a ata de registro de preços é um contrato que entrega uma opção de compra para o órgão público, haver a opção de não comprar considerando o preço no contrato parece natural. Se o contrato prever um preço muito alto, a administração pode preferir conduzir outro certame em vez de adquirir os equipamentos no preço do contrato.
+
+Além disso, se trouxermos a quantidade para o problema, o preço no contrato tenderá a ditar qual o quantitativo efetivo, seja por razões orçamentárias ou de custo-benefício. Na situação orçamentária pode acontecer de o orçamento disponível não permitir a aquisição de todo o quantitativo previsto no contrato. Já na situação de custo-benefício, o preço competitivo poderia acelerar os planos da administração de substituição de determinados equipamentos.
+
+A dualidade permite transpor de forma indolor o leilão com opção de venda para um pregão por registro de preços.
 
 \begin{proposicao}
 	\label{prop:nash-pregao-segundo-preco-rp}
@@ -68,7 +89,29 @@ O pagamento esperado realizado pelo vencedor será:
 	Trata-se do caso dual do resultado da proposição \ref{prop:nash-segundo-preco-opcao}.
 \end{proof}
 
+Em equilíbrio os licitantes tenderão a dar lances \textbf{abaixo} de seu custo, tornando problemático o contrato de registro de preços. Pelo Teorema da Equivalência de Receitas, o pagamento recebido será o mesmo do pregão de primeiro preço com registro de preço\footnote{Não calculamos o equilíbrio, mas ele pode ser facilmente abstraído a partir do leilão de primeiro preço com opção de venda.}. Portanto, o pagamento esperado será inferior ao pagamento realizado no pregão direto, mas superior ao custo do licitante. O problema é que a margem será estreitada, levando os licitantes à potencial maldição do vencedor.
+
+Como a lei de licitações prevê o desempate em favor das pequenas empresas, que são mais sensíveis ao risco, o pregão por registro de preço tende a dificultar a vida dessas empresas. Em particular, a própria logística é problemática: a empresa pode produzir algo que não será demandado ou mesmo as empresas que atuam revendendo itens ficarão expostas à flutação de preço existente no mercado. A lei também prevê condições para a alteração dos preços registrados\footnote{Artigo 82.}, mas qualquer coisa fora dessas condições é risco direto para o licitante e indireto para a administração, que poderá ter de conduzir outro processo licitatório.
+
+Vale ressaltar que a lei de licitações ainda prevê o preço de reserva, público ou não, de forma obrigatória na instrução processual de tal sorte que o modelo acima não é tão adequado. Entretanto, não é uma aproximação ruim supor meramente que há $n-1$ jogadores disputando o certame e seguir com o modelo sem preço de reserva. Basta imaginar que um dos jogadores tem exatamente a valoração $r$.
+
 \section{Pregão de segundo preço por registro de preços com qualidade}
+
+Não é possível verificar perfeitamente qual é a qualidade dos bens ofertados no contrato de registro de preços. Na melhor das hipóteses, pode ser necessário uma \emph{expertise} muito grande por parte do setor público em diversas áreas que não são diretamente relacionadas à sua atividade fim. Na pior das hipóteses, trata-se de algo que é impossível de se verificar. Por exemplo, a qualidade de uma obra. Na seara dos bens e serviços, que é sobre onde se repousa o presente modelo, pode ser alguma característica muito específica como a qualidade dos componentes contidos nos circuitos\footnote{Em 2014 houve uma polêmica sobre a mudança na qualidade dos chips de memória de armazenamento utilizados por uma série da Kingston. Os modelos dos \emph{benchmarks} usavam NANDs superiores. \url{https://www.anandtech.com/show/7763/an-update-to-kingston-ssdnow-v300-a-switch-to-slower-micron-nand}}. Como se trata de direito residual do fabricante, fica difícil de especificar.
+
+Para o presente modelo, vamos utilizar a ideia contida em \citet{Che1993}, que prevê um modelo de \emph{score} que equilibra qualidade versus preço. Como não é possível fazer pregão por preço e técnica, o análogo do \emph{score} na Lei n{\textordmasculine } 14.133, utilizaremos a probabilidade de o órgão público comprar o bem a partir de sua qualidade. A ideia de usar a qualidade de forma probabilística é tentar capturar a qualidade que escapa aos olhos da administração pública de tal sorte que a medida probabilidade acumulada $0$ caracteriza um bem que evidentemente não atende ao previsto em edital e a probabilidade acumulada $1$, um bem que atende perfeitamente ao previsto em edital. Nesse caso, pode ser, por exemplo, uma marca e modelo que sabidamente atendem aos anseios da administração.
+
+Naturalmente a qualidade está diretamente associada ao custo do bem de tal sorte que, sem o mecanismo, a tendência seria os licitantes ofertarem o produto mais barato possível e que potencialmente está aquém da qualidade esperada pela administração.
+
+O custo será dado por dois componentes: a qualidade e um componente que indica a eficiência do licitante, $\theta$. No modelo de pregão, o sinal será justamente o componente associado à eficiência.
+
+A partir do lema \ref{lema:qualidade-parametrizada}, podemos concluir que o ótimo ocorre quando \emph{score} ``marginal na qualidade'' for igual ao custo ``marginal na qualidade'', tal qual corriqueiro na nossa teoria econômica. No modelo, a densidade de probabilidade será igual ao custo marginal. Seja $H(q)$ a função de probabilidade acumulada na qualidade.
+
+\begin{equation}
+	q(\theta) = \text{argmax } H(q) - c(q, \theta) \Rightarrow \frac{dH(q)}{dq} = \frac{dc(q, \theta)}{dq}
+\end{equation}
+
+Encontrado $q(\theta)$, basta substituir de volta na função de custo, obtendo $c(q(\theta), \theta)$, uma função somente em $\theta$ que incorpora a qualidade. Substituindo o custo parametrizado no \emph{payoff}, o problema com duas variáveis poderá ser resolvido como um pregão usual de segundo preço, tal qual visto em \citet{Che1993}.
 
 \begin{proposicao}
 	\label{prop:nash-pregao-segundo-preco-qualidade}
@@ -77,3 +120,5 @@ O pagamento esperado realizado pelo vencedor será:
 		\beta(q, \theta) = c(q, \theta) + \frac{h(q)q'(\theta)}{H(q)^2g(\theta)}\int_{\theta}^1 c_{y}(q(y), y)[1-G(y)]H(q(y))dy
 	\end{equation}
 \end{proposicao}
+
+O lance em equilíbrio, embora seja de segundo preço, incorpora a qualidade no segundo termo. Caso a qualidade não tivesse relação com $\theta$, $q(\theta)$ seria constante, $q'(\theta)$ seria zero, anulando o segundo termo.

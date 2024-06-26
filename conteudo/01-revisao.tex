@@ -232,6 +232,8 @@ O Teorema da Equivalência de receitas, num certo sentido, é dual em relação 
 
 Há um porém em relação ao Teorema da Equivalência de Receitas: embora seja verdade que os leilões que satisfizerem as condições do teorema terão a mesma receita esperada, não é verdade que todas as estratégias que levam àquela receita são necessariamente estratégias de equilíbrio \citet{Shoham2008}. Isso significa que é necessário provar que a estratégia encontrada é efetivamente uma estratégia de equilíbrio.
 
+Outro ponto a se destacar, observando a tabela \ref{tab:tabela1}, é que não há equivalência de receitas entre leilões com preço de reserva e leilões sem preço de reserva, afinal, trata-se de alocações potencialmente distintas.
+
 \section{Leilões multi-objeto}
 
 A principal diferença entre um leilão multi-objeto para um leilão com um único objeto repousa sobre como a valoração é definida. Como agora, em vez de um único objeto à venda, existe um determinado conjunto de objetos, $K$, a valoração, $x_i$, será uma função sobre cada um dos subconjuntos de $K$, isto é, o conjunto das partes de $K$.
@@ -282,11 +284,24 @@ A qualidade também pode versar sobre caraterística não-contratável, isto é,
 Quando o problema da qualidade se torna endógeno, há a possibilidade de se empregar uma função de \emph{score}, $s(q)$, cujo objetivo é determinar a qualidade por meio de um parâmetro de eficiência, este, sim, obtido a partir de uma distribuição de probabilidade conhecida por todos os participantes. Isso dá substância ao lema:
 
 \begin{lema}
+	\label{lema:qualidade-parametrizada}
 	Com leilões (reversos) de primeiro e de segundo preço, a qualidade é escolhida em $q_s(\theta)$ para $\theta \in [0, 1]$ onde:
 	\begin{equation}
 		q_s(\theta) = \text{argmax } s(q) - c(q, \theta)
 	\end{equation}
 \end{lema}
+\begin{proof}
+	Em \citet{Che1993}.
+\end{proof}
+
+Assumindo que a qualidade será escolhida de acordo com algum parâmetro de custo privado dos jogadores, a estratégia muda.
+
+\begin{proposicao}
+	A estratégia de equilíbrio simétrico num pregão de primeiro preço que objetiva satisfazer uma função de \emph{score} é dada por:
+	\begin{equation}
+		\beta(\theta) = c(q, \theta) + \int_{\theta}^1 c_{\theta}(q_s(t), t) \frac{1-G(t)}{1-G(\theta)} dt
+	\end{equation}
+\end{proposicao}
 \begin{proof}
 	Em \citet{Che1993}.
 \end{proof}
